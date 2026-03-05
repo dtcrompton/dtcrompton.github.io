@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Crompton | GIS & Environmental Data Science</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h2 {
+            color: #2C3E50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .project-content p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tag {
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #27AE60;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #229954;
+        }
+        
+        .btn-secondary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2C3E50;
+            color: white;
+        }
+        
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Daniel Crompton</h1>
+            <p>GIS & Environmental Data Science Portfolio</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="projects">
+            
+            <!-- Brownfield Project -->
+            <div class="project-card">
+                <img src="projects/brownfield/preview.png" alt="Greater Manchester Brownfield Risk Map">
+                <div class="project-content">
+                    <h2>Greater Manchester Brownfield Restoration Potential</h2>
+                    <p>Geospatial analysis identifying 1,585 brownfield sites with environmental risk assessment and restoration suitability modelling. Combines satellite data, soil analysis, and terrain characteristics to prioritise nature-based remediation interventions.</p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Google Earth Engine</span>
+                        <span class="tag">R</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">QGIS</span>
+                        <span class="tag">Folium</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="projects/brownfield/map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+                        <a href="https://github.com/dtcrompton/gm-brownfield-restoration" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forest Cover Project -->
+            <div class="project-card">
+                <img src="projects/forest/preview.png" alt="UK National Parks Forest Change">
+                <div class="project-content">
+                    <h2>UK National Parks Forest Cover Change Analysis</h2>
+                    <p>Remote sensing workflow analysing forest loss and gain (2000–2024) across Yorkshire Dales, North York Moors, Lake District, and Northumberland using Google Earth Engine and R for data visualisation.</p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Google Earth Engine</span>
+                        <span class="tag">R</span>
+                        <span class="tag">Remote Sensing</span>
+                        <span class="tag">ggplot2</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/dtcrompton/uk-forest-cover-change" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>MSc Computer Science & AI</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/dtcrompton">GitHub</a> | 
+                <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
