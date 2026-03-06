@@ -74,13 +74,13 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 100px 40px 80px;
+            padding: 160px 40px 80px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
         }
         
         #hero h1 {
             font-size: 4.5em;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             font-weight: 700;
             background: linear-gradient(135deg, #B794D9, #7FAD87);
             -webkit-background-clip: text;
@@ -89,9 +89,9 @@
         }
         
         #hero .tagline {
-            font-size: 1.5em;
+            font-size: 1.65em;
             color: #b0b0b0;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 40px;
             line-height: 1.6;
         }
@@ -115,14 +115,14 @@
         
         /* Sections */
         section {
-            padding: 100px 40px;
+            padding: 80px 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .section-title {
             font-size: 2.5em;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             color: #ffffff;
             font-weight: 700;
         }
@@ -132,8 +132,21 @@
             background: #1a1a1a;
         }
         
+        .about-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .about-photo {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(183, 148, 217, 0.2);
+            border: 3px solid rgba(183, 148, 217, 0.3);
+        }
+        
         .about-content {
-            max-width: 900px;
             font-size: 1.15em;
             line-height: 1.8;
             color: #b0b0b0;
@@ -146,11 +159,13 @@
         /* Projects */
         #projects {
             background: #1f1f1f;
+            overflow: visible;
         }
         
         .projects-carousel {
             position: relative;
-            overflow: hidden;
+            overflow: visible;
+            padding: 20px 0;
         }
         
         .projects-wrapper {
@@ -158,7 +173,9 @@
             gap: 40px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
             scrollbar-width: thin;
             scrollbar-color: #B794D9 #2a2a2a;
         }
@@ -280,26 +297,29 @@
             font-weight: 600;
             transition: all 0.3s ease;
             font-size: 0.95em;
+            display: inline-block;
         }
         
         .btn-primary {
             background: linear-gradient(135deg, #B794D9, #9f7dc7);
             color: white;
+            box-shadow: 0 4px 8px rgba(183, 148, 217, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(183, 148, 217, 0.4);
+            box-shadow: 0 6px 15px rgba(183, 148, 217, 0.4);
         }
         
         .btn-secondary {
-            background: transparent;
-            color: #7FAD87;
-            border: 2px solid #7FAD87;
+            background: linear-gradient(135deg, #6B8E71, #7a9d80);
+            color: white;
+            box-shadow: 0 4px 8px rgba(107, 142, 113, 0.3);
         }
         
         .btn-secondary:hover {
-            background: rgba(127, 173, 135, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(107, 142, 113, 0.4);
         }
         
         /* Skills */
@@ -375,6 +395,10 @@
             flex-wrap: wrap;
         }
         
+        .contact-links .btn {
+            min-width: 220px;
+        }
+        
         /* Footer */
         footer {
             background: #1a1a1a;
@@ -398,7 +422,86 @@
             color: #c5a8e6;
         }
         
+        /* LinkedIn icon hover */
+        a[href*="linkedin.com"] svg {
+            transition: all 0.3s ease;
+        }
+
+        a[href*="linkedin.com"]:hover svg {
+            transform: scale(1.1);
+        }
+
+        a[href*="linkedin.com"]:hover path {
+            fill: #c5a8e6;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar-nav {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(183, 148, 217, 0.3);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: #B794D9;
+            border-color: #B794D9;
+            transform: scale(1.3);
+        }
+
+        .sidebar-nav a::after {
+            content: attr(data-section);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 26, 26, 0.9);
+            color: #B794D9;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-nav a:hover::after {
+            opacity: 1;
+        }
+        
         /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar-nav {
+                display: none;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-photo {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        
         @media (max-width: 768px) {
             #hero h1 {
                 font-size: 3em;
@@ -427,77 +530,7 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
-            
-            /* LinkedIn icon hover */
-            a[href*="linkedin.com"] svg {
-                transition: all 0.3s ease;
-            }
-            
-            a[href*="linkedin.com"]:hover svg {
-                transform: scale(1.1);
-            }
-            
-            a[href*="linkedin.com"]:hover path {
-                fill: #c5a8e6;
-            }
         }
-        
-        /* Sidebar Navigation */
-            .sidebar-nav {
-                position: fixed;
-                right: 40px;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 999;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .sidebar-nav a {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background: rgba(183, 148, 217, 0.3);
-                border: 2px solid transparent;
-                transition: all 0.3s ease;
-                position: relative;
-            }
-            
-            .sidebar-nav a:hover,
-            .sidebar-nav a.active {
-                background: #B794D9;
-                border-color: #B794D9;
-                transform: scale(1.3);
-            }
-            
-            .sidebar-nav a::after {
-                content: attr(data-section);
-                position: absolute;
-                right: 25px;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(26, 26, 26, 0.9);
-                color: #B794D9;
-                padding: 5px 12px;
-                border-radius: 4px;
-                font-size: 0.85em;
-                white-space: nowrap;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
-            
-            .sidebar-nav a:hover::after {
-                opacity: 1;
-            }
-            
-            /* Hide sidebar on mobile */
-            @media (max-width: 1024px) {
-                .sidebar-nav {
-                    display: none;
-                }
-            }
     </style>
 </head>
 <body>
@@ -508,36 +541,40 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="cv.html">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-<section id="hero">
-    <div>
-        <h1 style="color: #e8e8e8; background: none; -webkit-text-fill-color: #e8e8e8;">Daniel Crompton</h1>
-        
-        <h1 style="margin-top: 10px;">Building tools for ecological restoration</h1>
-        
-        <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank" style="display: inline-block; margin: 30px 0 25px; transition: transform 0.3s ease;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.3s ease;">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#B794D9"/>
-            </svg>
-        </a>
-        
-        <p class="tagline">Geospatial data scientist focused on mycoremediation, brownfield assessment, and nature-based solutions</p>
-        <a href="#projects" class="hero-cta">View Projects</a>
-    </div>
-</section>
+    <section id="hero">
+        <div>
+            <h1 style="color: #e8e8e8; background: none; -webkit-text-fill-color: #e8e8e8;">Daniel Crompton</h1>
+            
+            <h1 style="margin-top: 10px;">Building tools for ecological restoration</h1>
+            
+            <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank" style="display: inline-block; margin: 30px 0 25px; transition: transform 0.3s ease;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.3s ease;">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#B794D9"/>
+                </svg>
+            </a>
+            
+            <p class="tagline">Geospatial data scientist focused on mycoremediation, brownfield assessment, and nature-based solutions</p>
+            <a href="#projects" class="hero-cta">View Projects</a>
+        </div>
+    </section>
 
     <section id="about">
         <h2 class="section-title">About</h2>
-        <div class="about-content">
-            <p>I'm developing geospatial data science skills with a focus on environmental restoration and nature-based solutions. After 20 years in quantity surveying and commercial management (working my way from trainee to Head of Department across rail and civils projects), I'm building expertise in remote sensing, GIS, and predictive modelling through hands-on projects that address ecological challenges.</p>
-            
-            <p>My particular interest is mycoremediation — using fungi to remediate contaminated brownfield sites — an approach I believe has transformative potential for healing ecosystems damaged by industrial activity. I combine satellite imagery analysis (Google Earth Engine), spatial statistics (R, Python), and interactive mapping (QGIS, Folium) to build tools that support ecological decision-making.</p>
-            
-            <p>My background in commercial management gives me an unusual perspective on making environmental interventions economically viable and stakeholder-friendly. I'm actively building a portfolio of geospatial projects while seeking opportunities to transition into environmental data science professionally.</p>
+        <div class="about-container">
+            <img src="assets/headshot.jpg" alt="Daniel Crompton" class="about-photo">
+            <div class="about-content">
+                <p>I'm developing geospatial data science skills with a focus on environmental restoration and nature-based solutions. After 20 years in quantity surveying and commercial management across major rail and civil engineering projects, I'm building expertise in remote sensing, GIS, and predictive modelling through hands-on projects that address ecological challenges.</p>
+                
+                <p>My particular interest is mycoremediation — using fungi to remediate contaminated brownfield sites — an approach I believe has transformative potential for healing ecosystems damaged by industrial activity. I combine satellite imagery analysis (Google Earth Engine), spatial statistics (R, Python), and interactive mapping (QGIS, Folium) to build tools that support ecological decision-making.</p>
+                
+                <p>My background in commercial management gives me a unique perspective on making environmental interventions economically viable and stakeholder-friendly. I'm actively building a portfolio of geospatial projects while seeking opportunities to transition into environmental data science professionally.</p>
+            </div>
         </div>
     </section>
 
@@ -597,7 +634,7 @@
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://github.com/dtcrompton/uk-national-parks-forest-change" class="btn btn-secondary" target="_blank">View Code</a>
+                            <a href="https://github.com/dtcrompton/earth-engine-gis-uk-parks" class="btn btn-secondary" target="_blank">View Code</a>
                         </div>
                     </div>
                 </div>
@@ -650,24 +687,24 @@
             <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
             
             <div class="contact-links">
-                <a href="https://linkedin.com/in/yourprofile" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
                 <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
             </div>
         </div>
     </section>
 
     <footer>
-            <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton">GitHub</a> · <a href="https://linkedin.com/in/yourprofile">LinkedIn</a></p>
-        </footer>
-        
-        <div class="sidebar-nav">
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+
+    <div class="sidebar-nav">
         <a href="#hero" data-section="Top"></a>
         <a href="#about" data-section="About"></a>
         <a href="#projects" data-section="Projects"></a>
         <a href="#skills" data-section="Skills"></a>
         <a href="#contact" data-section="Contact"></a>
     </div>
-    
+
     <script>
         // Highlight active section in sidebar
         const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
