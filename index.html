@@ -142,7 +142,6 @@
         .about-photo {
             width: 100%;
             border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(183, 148, 217, 0.2);
             border: 3px solid rgba(183, 148, 217, 0.3);
         }
         
@@ -159,43 +158,16 @@
         /* Projects */
         #projects {
             background: #1f1f1f;
-            overflow: visible;
         }
         
-        .projects-carousel {
-            position: relative;
-            overflow: visible;
-            padding: 20px 0;
-        }
-        
-        .projects-wrapper {
-            display: flex;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 40px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding-bottom: 30px;
-            padding-left: 10px;
-            padding-right: 10px;
-            scrollbar-width: thin;
-            scrollbar-color: #B794D9 #2a2a2a;
-        }
-        
-        .projects-wrapper::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .projects-wrapper::-webkit-scrollbar-track {
-            background: #2a2a2a;
-            border-radius: 10px;
-        }
-        
-        .projects-wrapper::-webkit-scrollbar-thumb {
-            background: #B794D9;
-            border-radius: 10px;
+            margin-top: 20px;
         }
         
         .project-card {
-            min-width: 500px;
             background: #2a2a2a;
             border-radius: 16px;
             overflow: hidden;
@@ -206,6 +178,7 @@
         .project-card:hover {
             box-shadow: 0 0 40px rgba(183, 148, 217, 0.3);
             border-color: rgba(183, 148, 217, 0.4);
+            transform: translateY(-5px);
         }
         
         .project-card:hover .project-image img {
@@ -213,7 +186,7 @@
         }
         
         .project-image {
-            height: 300px;
+            height: 280px;
             overflow: hidden;
             position: relative;
         }
@@ -226,42 +199,34 @@
         }
         
         .project-status {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(127, 173, 135, 0.9);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
+            display: none;
         }
         
         .project-content {
-            padding: 35px;
+            padding: 30px;
         }
         
         .project-content h3 {
             color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 1.8em;
+            margin-bottom: 12px;
+            font-size: 1.5em;
             font-weight: 600;
         }
         
         .project-content p {
             color: #b0b0b0;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.7;
+            font-size: 0.95em;
         }
         
         .key-outcome {
             background: rgba(183, 148, 217, 0.1);
             border-left: 3px solid #B794D9;
-            padding: 15px 20px;
-            margin: 25px 0;
+            padding: 12px 16px;
+            margin: 20px 0;
             color: #e0e0e0;
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
         
         .key-outcome strong {
@@ -271,32 +236,33 @@
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 8px;
+            margin-bottom: 20px;
         }
         
         .tag {
             background: rgba(127, 173, 135, 0.2);
             color: #7FAD87;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.8em;
             font-weight: 500;
             border: 1px solid rgba(127, 173, 135, 0.3);
         }
         
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         
         .btn {
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 0.95em;
+            font-size: 0.9em;
             display: inline-block;
         }
         
@@ -500,9 +466,17 @@
                 max-width: 300px;
                 margin: 0 auto;
             }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
+            #hero {
+                padding: 140px 20px 60px;
+            }
+            
             #hero h1 {
                 font-size: 3em;
             }
@@ -523,10 +497,6 @@
                 padding: 60px 20px;
             }
             
-            .project-card {
-                min-width: 90%;
-            }
-            
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -541,7 +511,6 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="cv.html">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -551,7 +520,7 @@
         <div>
             <h1 style="color: #e8e8e8; background: none; -webkit-text-fill-color: #e8e8e8;">Daniel Crompton</h1>
             
-            <h1 style="margin-top: 10px;">Building tools for ecological restoration</h1>
+            <h1 style="margin-top: 10px;">Building Tools For Ecological Restoration</h1>
             
             <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank" style="display: inline-block; margin: 30px 0 25px; transition: transform 0.3s ease;">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: all 0.3s ease;">
@@ -569,76 +538,135 @@
         <div class="about-container">
             <img src="assets/headshot.jpg" alt="Daniel Crompton" class="about-photo">
             <div class="about-content">
-                <p>I'm developing geospatial data science skills with a focus on environmental restoration and nature-based solutions. After 20 years in quantity surveying and commercial management across major rail and civil engineering projects, I'm building expertise in remote sensing, GIS, and predictive modelling through hands-on projects that address ecological challenges.</p>
-                
+                <p>I'm developing geospatial data science skills with a focus on environmental restoration and nature-based solutions. After 20 years in quantity surveying and commercial management across major rail and civils projects, I'm building expertise in remote sensing, GIS, and predictive modelling through hands-on projects that address ecological challenges.</p>
+
                 <p>My particular interest is mycoremediation — using fungi to remediate contaminated brownfield sites — an approach I believe has transformative potential for healing ecosystems damaged by industrial activity. I combine satellite imagery analysis (Google Earth Engine), spatial statistics (R, Python), and interactive mapping (QGIS, Folium) to build tools that support ecological decision-making.</p>
-                
-                <p>My background in commercial management gives me a unique perspective on making environmental interventions economically viable and stakeholder-friendly. I'm actively building a portfolio of geospatial projects while seeking opportunities to transition into environmental data science professionally.</p>
-            </div>
+
+                <p>My background in commercial management gives me a unique perspective on making environmental interventions economically viable and stakeholder-friendly. I'm actively building a portfolio of geospatial projects while seeking opportunities to transition into environmental data science professionally.</p>            </div>
         </div>
     </section>
 
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-carousel">
-            <div class="projects-wrapper">
-                
-                <!-- Brownfield Project -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="projects/brownfield/preview.png" alt="Greater Manchester Brownfield Risk Map">
-                        <span class="project-status">Completed</span>
+        <div class="projects-grid">
+            
+            <!-- Brownfield Project -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/brownfield/preview.png" alt="Greater Manchester Brownfield Risk Map">
+                    <span class="project-status">Completed</span>
+                </div>
+                <div class="project-content">
+                    <h3>Greater Manchester Brownfield Restoration Potential</h3>
+                    <p>Geospatial analysis identifying 1,585 brownfield sites with environmental risk assessment and restoration suitability modelling using satellite data, soil analysis, and terrain characteristics.</p>
+                    
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Identified 746 high-risk sites covering 772 hectares suitable for mycoforestry interventions
                     </div>
-                    <div class="project-content">
-                        <h3>Greater Manchester Brownfield Restoration Potential</h3>
-                        <p>Geospatial analysis identifying 1,585 brownfield sites with environmental risk assessment and restoration suitability modelling using satellite data, soil analysis, and terrain characteristics.</p>
-                        
-                        <div class="key-outcome">
-                            <strong>Key Outcome:</strong> Identified 746 high-risk sites covering 772 hectares suitable for ecological assessment and mycoforestry interventions
-                        </div>
-                        
-                        <div class="project-tags">
-                            <span class="tag">Google Earth Engine</span>
-                            <span class="tag">R</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">QGIS</span>
-                            <span class="tag">Folium</span>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="projects/brownfield/map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
-                            <a href="https://github.com/dtcrompton/gm-brownfield-restoration" class="btn btn-secondary" target="_blank">View Code</a>
-                        </div>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Google Earth Engine</span>
+                        <span class="tag">R</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">QGIS</span>
+                        <span class="tag">Folium</span>
+                        <span class="tag">ML</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="projects/brownfield/map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+                        <a href="https://github.com/dtcrompton/gm-brownfield-restoration" class="btn btn-secondary" target="_blank">View Code</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Forest Cover Project -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="projects/forest/preview.png" alt="UK National Parks Forest Change">
-                        <span class="project-status">Completed</span>
+            <!-- Forest Cover Project -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/forest/preview.png" alt="UK National Parks Forest Change">
+                    <span class="project-status">Completed</span>
+                </div>
+                <div class="project-content">
+                    <h3>UK National Parks Forest Cover Change Analysis</h3>
+                    <p>Remote sensing workflow analysing forest loss and gain (2000–2024) across Yorkshire Dales, North York Moors, Lake District, and Northumberland using Google Earth Engine and R.</p>
+                    
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Quantified 24-year forest dynamics across four protected areas, revealing net forest gain despite localized losses
                     </div>
-                    <div class="project-content">
-                        <h3>UK National Parks Forest Cover Change Analysis</h3>
-                        <p>Remote sensing workflow analysing forest loss and gain (2000–2024) across Yorkshire Dales, North York Moors, Lake District, and Northumberland using Google Earth Engine and R.</p>
-                        
-                        <div class="key-outcome">
-                            <strong>Key Outcome:</strong> Quantified 24-year forest dynamics across four protected areas, revealing net forest gain despite localized losses
-                        </div>
-                        
-                        <div class="project-tags">
-                            <span class="tag">Google Earth Engine</span>
-                            <span class="tag">R</span>
-                            <span class="tag">Remote Sensing</span>
-                            <span class="tag">ggplot2</span>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="https://github.com/dtcrompton/earth-engine-gis-uk-parks" class="btn btn-secondary" target="_blank">View Code</a>
-                        </div>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Google Earth Engine</span>
+                        <span class="tag">R</span>
+                        <span class="tag">Remote Sensing</span>
+                        <span class="tag">ggplot2</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/dtcrompton/earth-engine-gis-uk-parks" class="btn btn-secondary" target="_blank">View Code</a>
                     </div>
                 </div>
+            </div>
 
+                        <!-- AI Ethics Dissertation -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3a2a4a 0%, #5a4a6a 50%, #3a2a4a 100%); display: flex; align-items: center; justify-content: center;">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="#B794D9" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <span class="project-status">Research</span>
+                </div>
+                <div class="project-content">
+                    <h3>AI Ethics & Blockchain for Dataset Governance</h3>
+                    <p>MSc dissertation exploring intellectual property, consent frameworks, and ethical considerations in AI dataset curation. Proposed blockchain-based solutions for transparent data provenance.</p>
+                    
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Addressed real-world deployment challenges for AI in regulated environmental contexts
+                    </div>
+                    
+                    <div class="project-tags">
+                        <span class="tag">AI Ethics</span>
+                        <span class="tag">Blockchain</span>
+                        <span class="tag">Data Governance</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">Research Overview</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CO2 Emissions Project -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2C3E46 0%, #445963 50%, #2C3E46 100%); display: flex; align-items: center; justify-content: center;">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#7FAD87" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <span class="project-status">Academic</span>
+                </div>
+                <div class="project-content">
+                    <h3>CO₂ Emissions Prediction Using Machine Learning</h3>
+                    <p>Applied regression models (Random Forest, Gradient Boosting) to forecast carbon emissions, demonstrating data-driven approaches to sustainability challenges. University coursework project.</p>
+                    
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Feature engineering and hyperparameter tuning to optimize prediction accuracy for climate modelling
+                    </div>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Regression</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">Code Archived</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -669,10 +697,13 @@
             </div>
             
             <div class="skill-category">
-                <h3>Data Science</h3>
+                <h3>Data Science & ML</h3>
                 <ul>
                     <li>Machine Learning (scikit-learn)</li>
+                    <li>Regression Analysis & Forecasting</li>
                     <li>Statistical Modelling</li>
+                    <li>Natural Language Processing</li>
+                    <li>Computer Vision</li>
                     <li>Data Visualisation</li>
                     <li>Python & R</li>
                 </ul>
