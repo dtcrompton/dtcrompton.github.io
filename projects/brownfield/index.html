@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greater Manchester Brownfield Restoration | Daniel Crompton</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav a {
+            color: #B794D9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #c5a8e6;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 100px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B794D9, #7FAD87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #B794D9, #9f7dc7);
+            color: white;
+            box-shadow: 0 4px 15px rgba(183, 148, 217, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(183, 148, 217, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6B8E71, #7a9d80);
+            color: white;
+            box-shadow: 0 4px 15px rgba(107, 142, 113, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 142, 113, 0.4);
+        }
+        
+        /* Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 2.2em;
+            color: #B794D9;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 1.6em;
+            color: #7FAD87;
+            margin: 40px 0 20px;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #c0c0c0;
+        }
+        
+        .highlight-box {
+            background: rgba(183, 148, 217, 0.1);
+            border-left: 4px solid #B794D9;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #B794D9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #7FAD87;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+        
+        .image-container {
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+        }
+        
+        .image-container img {
+            width: 100%;
+            display: block;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #808080;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .code-block {
+            background: #2a2a2a;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: #7FAD87;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .code-block code {
+            color: #B794D9;
+        }
+        
+        ul, ol {
+            margin: 20px 0 20px 40px;
+            color: #c0c0c0;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        
+        .methodology-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .methodology-steps > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+        
+        .methodology-steps > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #B794D9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+        }
+        
+        .methodology-steps ul {
+            list-style: disc;
+        }
+        
+        /* Contact */
+        #contact {
+            background: #1f1f1f;
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .contact-content p {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .contact-links .btn {
+            min-width: 220px;
+        }
+        
+        .footer-links {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(183, 148, 217, 0.2);
+        }
+        
+        .footer-links a {
+            color: #B794D9;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #c5a8e6;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            border-top: 1px solid rgba(183, 148, 217, 0.1);
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #808080;
+            font-size: 0.9em;
+        }
+        
+        footer a {
+            color: #B794D9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #c5a8e6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 60px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .methodology-steps > li {
+                padding-left: 50px;
+            }
+            
+            .methodology-steps > li::before {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../../index.html">← Back to Portfolio</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Greater Manchester Brownfield Restoration Potential</h1>
+        <p class="tagline">Geospatial risk assessment and machine learning for ecological restoration planning</p>
+        <div class="hero-actions">
+            <a href="map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+            <a href="explainer.html" class="btn btn-secondary">Stakeholder Explainer</a>
+            <a href="https://github.com/dtcrompton/gm-brownfield-restoration" class="btn btn-secondary" target="_blank">View Code</a>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- Problem Statement -->
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>Greater Manchester contains over 1,500 registered brownfield sites — former industrial land contaminated by decades of manufacturing and extraction. These sites pose environmental risks through potential groundwater pollution and contamination spread to nearby watercourses.</p>
+            
+            <p>However, brownfield restoration using nature-based solutions like mycoforestry (fungal remediation) offers transformative potential for healing these damaged ecosystems. The challenge: <strong>which sites should be prioritised for ecological assessment and restoration interventions?</strong></p>
+            
+            <p>This project combines satellite imagery analysis, geospatial modelling, and machine learning to answer that question.</p>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="section">
+            <h2>Key Findings</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">1,585</div>
+                    <div class="stat-label">Active brownfield sites analysed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">746</div>
+                    <div class="stat-label">High-risk sites identified</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">772 ha</div>
+                    <div class="stat-label">High-risk land area</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">47%</div>
+                    <div class="stat-label">Sites scored high priority</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Primary Finding</h3>
+                <p><strong>Site size and terrain flatness are the strongest predictors of restoration suitability.</strong> The machine learning model found that moderately-sized (0.1–10 hectares), flat brownfield sites offer the best combination of ecological risk and restoration feasibility.</p>
+                
+                <p>Salford M5 emerged as the highest-risk area, with three of the top 10 priority sites concentrated near the River Irwell — reflecting the intersection of flat terrain, permeable soils, and proximity to watercourses.</p>
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="section">
+            <h2>Methodology</h2>
+            <p>This project integrates multiple geospatial platforms and programming languages to build a comprehensive risk assessment pipeline:</p>
+            
+            <ol class="methodology-steps">
+                <li>
+                    <h3>Data Collection (Google Earth Engine)</h3>
+                    <p>Imported the UK brownfield land register and filtered to Greater Manchester (bounding box: -2.7 to -1.95°E, 53.35 to 53.65°N). Integrated satellite-derived environmental layers:</p>
+                    <ul>
+                        <li>ESA WorldCover (land cover, 10m resolution)</li>
+                        <li>WWF HydroSHEDS (river networks)</li>
+                        <li>OpenLandMap soil texture (permeability classes)</li>
+                        <li>SRTM elevation and derived slope</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <h3>Risk Score Calculation (JavaScript in GEE)</h3>
+                    <p>Calculated composite risk scores (0–1 scale) for each site based on three environmental factors:</p>
+                    <div class="code-block">
+<pre><code>// Water proximity risk (contamination spread potential)
+var water_risk = riverDistance.divide(5000).multiply(-1).add(1).clamp(0,1);
+
+// Soil permeability risk (groundwater pollution)
+var soil_risk = soilTexture.divide(12);
+
+// Terrain flatness (industrial land proxy)
+var slope_risk = slope.divide(30).multiply(-1).add(1).clamp(0,1);
+
+// Composite score (equal weighting)
+var total_risk = water_risk.add(soil_risk).add(slope_risk).divide(3);</code></pre>
+                    </div>
+                    <p>Exported results to CSV for statistical analysis (1,583 sites with calculated risk scores).</p>
+                </li>
+                
+                <li>
+                    <h3>Statistical Analysis (R)</h3>
+                    <p>Categorised sites into Low/Medium/High risk groups and generated publication-quality visualisations using ggplot2:</p>
+                    <ul>
+                        <li>Risk score distribution histogram</li>
+                        <li>Category breakdown bar chart (746 high, 764 medium, 72 low)</li>
+                        <li>Site size vs. risk scatter plot</li>
+                        <li>Top 10 highest-risk sites ranking</li>
+                    </ul>
+                    <div class="image-container">
+                        <img src="risk_distribution.png" alt="Risk Distribution">
+                    </div>
+                    <p class="image-caption">Distribution of contamination risk scores across 1,582 sites</p>
+                    
+                    <div class="image-container">
+                        <img src="size_risk_scatter.png" alt="Site Size vs Risk">
+                    </div>
+                    <p class="image-caption">Site size vs. contamination risk — showing no strong correlation between area and risk score</p>
+                </li>
+                
+                <li>
+                    <h3>Cartography (QGIS)</h3>
+                    <p>Created a polished, print-quality map with professional cartographic elements (legend, scale bar, north arrow, title block). Sites colour-coded by risk category for stakeholder presentations.</p>
+                    <div class="image-container">
+                        <img src="GM Brownfield Risk Map.png" alt="QGIS Map">
+                    </div>
+                    <p class="image-caption">Final map showing brownfield sites colour-coded by environmental risk</p>
+                </li>
+                
+                <li>
+                    <h3>Interactive Mapping (Python + Folium)</h3>
+                    <p>Built a web-based interactive map allowing users to:</p>
+                    <ul>
+                        <li>Click markers to view site details (address, risk scores, size)</li>
+                        <li>Toggle High/Medium/Low risk categories on/off</li>
+                        <li>Measure distances between sites</li>
+                        <li>Recenter the map view</li>
+                    </ul>
+                    <p>Exports as standalone HTML (no server required) — practical for sharing with non-technical stakeholders.</p>
+                </li>
+                
+                <li>
+                    <h3>Machine Learning (Python + scikit-learn)</h3>
+                    <p>Trained a Random Forest classifier to predict restoration suitability based on site characteristics. Key findings:</p>
+                    <ul>
+                        <li><strong>Site size (hectares)</strong> is the dominant predictor (75% feature importance)</li>
+                        <li><strong>Terrain flatness</strong> contributes 13% (proxy for industrial land use)</li>
+                        <li>Water proximity and soil permeability have minimal predictive power once size and terrain are accounted for</li>
+                    </ul>
+                    <div class="image-container">
+                        <img src="ml_feature_importance.png" alt="Feature Importance">
+                    </div>
+                    <p class="image-caption">Random Forest feature importance analysis</p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="section">
+            <h2>Technical Approach</h2>
+            
+            <h3>Risk Score Design Rationale</h3>
+            <p>The composite risk score prioritises three contamination pathways:</p>
+            <ul>
+                <li><strong>Water proximity:</strong> Sites within 1-2km of rivers/streams have higher contamination spread potential</li>
+                <li><strong>Soil permeability:</strong> Sandy soils (higher permeability) increase groundwater pollution risk</li>
+                <li><strong>Terrain flatness:</strong> Flat sites are more likely former industrial land (warehouses, factories, rail yards)</li>
+            </ul>
+            <p>Equal weighting was chosen due to lack of empirical data on relative pathway importance. Future work could use expert elicitation or historical contamination records to refine weights.</p>
+            
+            <h3>Machine Learning Model</h3>
+            <p>The Random Forest classifier achieved 100% accuracy on test data — however, this reflects the use of a <strong>synthetic target variable</strong> rather than real restoration outcomes. The target was defined using deterministic rules:</p>
+            <div class="code-block">
+<pre><code>suitable = (
+    (risk_category in ['Medium', 'High']) &
+    (0.1 <= hectares <= 10) &
+    (slope_risk > 0.8)
+)</code></pre>
+            </div>
+            <p>The model learned these rules perfectly because they're predictive by design. With access to actual restoration project records (success/failure outcomes, intervention costs, ecological recovery metrics), this approach could be extended to build a genuine predictive model for real-world decision-making.</p>
+            
+            <div class="image-container">
+                <img src="ml_confusion_matrix.png" alt="Confusion Matrix">
+            </div>
+            <p class="image-caption">Perfect classification on test set (317 sites) reflects synthetic target variable</p>
+        </div>
+
+        <!-- Limitations -->
+        <div class="section">
+            <h2>Limitations & Future Work</h2>
+            
+            <div class="highlight-box">
+                <h3>Key Limitation</h3>
+                <p>This analysis prioritises sites based on <strong>contamination risk</strong> (likelihood of environmental harm), not <strong>restoration potential</strong> (likelihood of ecological success). The two are related but not identical.</p>
+            </div>
+            
+            <p>Future extensions could address this by:</p>
+            <ul>
+                <li><strong>Integrating contamination records:</strong> Historical soil testing data from councils would validate risk scores against actual contamination levels</li>
+                <li><strong>Adding biodiversity data:</strong> GBIF records could identify sites where fungi/vegetation are already recovering (positive indicators)</li>
+                <li><strong>Economic feasibility modelling:</strong> Cost estimates for remediation interventions vs. expected ecological benefits</li>
+                <li><strong>Real restoration outcomes:</strong> Partner with practitioners to track which sites succeed/fail, enabling supervised learning on actual results</li>
+            </ul>
+            
+            <p>The methodology developed here is transferable to other UK cities with industrial heritage (Sheffield, Birmingham, Newcastle) and could inform national-scale brownfield restoration planning.</p>
+        </div>
+
+        <!-- Tools & Skills -->
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <p><strong>Platforms:</strong> Google Earth Engine, QGIS, Jupyter</p>
+            <p><strong>Languages:</strong> JavaScript (GEE), Python, R</p>
+            <p><strong>Python Libraries:</strong> GeoPandas, Folium, scikit-learn, pandas, matplotlib, seaborn</p>
+            <p><strong>R Packages:</strong> sf, ggplot2, dplyr, tidyr</p>
+            <p><strong>Data Sources:</strong> UK Brownfield Register, ESA WorldCover, HydroSHEDS, OpenLandMap, SRTM</p>
+        </div>
+
+    </div>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Project Details</a> · 
+                <a href="../../index.html">Portfolio</a> · 
+                <a href="https://github.com/dtcrompton/gm-brownfield-restoration" target="_blank">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+</body>
+</html>
