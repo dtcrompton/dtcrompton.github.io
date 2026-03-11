@@ -423,8 +423,39 @@
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
+
+            <!-- 1. Leeds Fungi Project -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/fungi/preview.png" alt="Leeds Fungal Biodiversity Analysis">
+                    <span class="project-status">Completed</span>
+                </div>
+                <div class="project-content">
+                    <h3>Leeds Fungal Biodiversity Analysis</h3>
+                    <p>Citizen science data analysis investigating whether urban tree planting supports fungal diversity recovery — revealing short-term mycorrhizal network disruption and challenging assumptions in restoration ecology.</p>
+
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Fungal diversity declined after 2020 planting schemes, not increased — mycorrhizal proportion falling as saprotrophic fungi rose, consistent with soil disturbance disrupting established underground networks
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">R</span>
+                        <span class="tag">GBIF</span>
+                        <span class="tag">Folium</span>
+                        <span class="tag">GAM</span>
+                        <span class="tag">Citizen Science</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="projects/fungi/index.html" class="btn btn-primary">Project Details</a>
+                        <a href="projects/fungi/map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+                        <a href="https://github.com/dtcrompton/leeds-brownfield-fungal-recovery" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
             
-            <!-- Brownfield Project -->
+            <!-- 2. Greater Manchester Brownfield Project -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="projects/brownfield/preview.png" alt="Greater Manchester Brownfield Risk Map">
@@ -455,7 +486,7 @@
                 </div>
             </div>
 
-            <!-- Forest Cover Project -->
+            <!-- 3. Forest Cover Project -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="projects/forest/preview.png" alt="UK National Parks Forest Change">
@@ -483,7 +514,38 @@
                 </div>
             </div>
 
-            <!-- AI Ethics Dissertation -->
+            <!-- 4. CO2 Emissions Project -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/co2/preview.png" alt="CO2 Model Performance Comparison">
+                    <span class="project-status">Academic</span>
+                </div>
+                <div class="project-content">
+                    <h3>CO₂ Emissions Prediction Using Machine Learning</h3>
+                    <p>Predicted UK industrial CO₂ emissions from green energy adoption data using Decision Tree and Random Forest regressors, with genetic algorithm feature selection and GridSearchCV optimisation.</p>
+
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> Random Forest outperformed Decision Tree (RMSE 5.84 vs 17.70 post-optimisation), demonstrating ensemble methods' robustness on small datasets
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Regression</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="projects/co2/index.html" class="btn btn-primary">Project Details</a>
+                        <a href="https://github.com/dtcrompton/MLCO2" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-grid projects-hidden" id="projects-extra" style="display:none; margin-top: 40px;">
+
+            <!-- 5. AI Ethics Dissertation -->
             <div class="project-card">
                 <div class="project-image">
                     <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3a2a4a 0%, #5a4a6a 50%, #3a2a4a 100%); display: flex; align-items: center; justify-content: center;">
@@ -513,34 +575,20 @@
                     </div>
                 </div>
             </div>
-
-            <!-- CO2 Emissions Project -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="projects/co2/preview.png" alt="CO2 Model Performance Comparison">
-                    <span class="project-status">Academic</span>
-                </div>
-                <div class="project-content">
-                    <h3>CO₂ Emissions Prediction Using Machine Learning</h3>
-                    <p>Predicted UK industrial CO₂ emissions from green energy adoption data using Decision Tree and Random Forest regressors, with genetic algorithm feature selection and GridSearchCV optimisation.</p>
-
-                    <div class="key-outcome">
-                        <strong>Key Outcome:</strong> Random Forest outperformed Decision Tree (RMSE 5.84 vs 17.70 post-optimisation), demonstrating ensemble methods' robustness on small datasets
-                    </div>
-
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">scikit-learn</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Regression</span>
-                    </div>
-
-                    <div class="project-links">
-                        <a href="projects/co2/index.html" class="btn btn-primary">Project Details</a>
-                        <a href="https://github.com/dtcrompton/MLCO2" class="btn btn-secondary" target="_blank">View Code</a>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="btn btn-secondary" id="view-all-btn" onclick="
+                var extra = document.getElementById('projects-extra');
+                var btn = document.getElementById('view-all-btn');
+                if (extra.style.display === 'none') {
+                    extra.style.display = 'grid';
+                    btn.textContent = 'Show Less';
+                } else {
+                    extra.style.display = 'none';
+                    btn.textContent = 'View All Projects';
+                    document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+                }
+            ">View All Projects</button>
         </div>
     </section>
 
