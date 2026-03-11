@@ -375,6 +375,9 @@
             section { padding: 60px 20px; }
             .skills-grid { grid-template-columns: 1fr; }
         }
+        #projects-extra {
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -576,19 +579,18 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="btn btn-secondary" id="view-all-btn" onclick="
+            <a class="btn btn-primary" id="view-all-btn" onclick="
                 var extra = document.getElementById('projects-extra');
                 var btn = document.getElementById('view-all-btn');
                 if (extra.style.display === 'none') {
                     extra.style.display = 'grid';
-                    btn.textContent = 'Show Less';
+                    btn.textContent = 'View All Projects ↑';
                 } else {
                     extra.style.display = 'none';
                     btn.textContent = 'View All Projects';
                     document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
                 }
-            ">View All Projects</button>
+            " style="cursor: pointer; padding: 14px 32px; font-size: 1em;">View All Projects</a>
         </div>
     </section>
 
