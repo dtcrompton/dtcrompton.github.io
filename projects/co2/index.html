@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO₂ Emissions Prediction | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* ============================================================
+           projects/co2/index.html — page-specific styles only
+           Shared styles loaded from /styles.css
+           ============================================================ */
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 100px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B794D9, #7FAD87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .academic-badge {
+            display: inline-block;
+            background: rgba(127, 173, 135, 0.15);
+            border: 1px solid rgba(127, 173, 135, 0.4);
+            color: #7FAD87;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        /* Content container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            text-align: center;
+        }
+
+        /* Model comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1em;
+        }
+
+        .comparison-table th {
+            background: rgba(183, 148, 217, 0.15);
+            color: #B794D9;
+            padding: 14px 20px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(183, 148, 217, 0.3);
+        }
+
+        .comparison-table td {
+            padding: 14px 20px;
+            color: #c0c0c0;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.08);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr.winner td {
+            color: #7FAD87;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(183, 148, 217, 0.04);
+        }
+
+        .better {
+            color: #7FAD87;
+            font-weight: 600;
+        }
+
+        .worse {
+            color: #D9947F;
+        }
+
+        /* Methodology numbered steps */
+        .methodology-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .methodology-steps > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+
+        .methodology-steps > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #B794D9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .methodology-steps ul {
+            list-style: disc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .container { padding: 60px 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .methodology-steps > li { padding-left: 50px; }
+            .methodology-steps > li::before { width: 35px; height: 35px; font-size: 1em; }
+            .comparison-table { font-size: 0.9em; }
+            .comparison-table th, .comparison-table td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body class="project-page">
+
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="https://dtcrompton.github.io/index.html">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="academic-badge">MSc Coursework — Applied AI</div>
+        <h1>CO₂ Emissions Prediction Using Machine Learning</h1>
+        <p class="tagline">Predicting the impact of renewable energy adoption on UK carbon emissions using Decision Tree and Random Forest regressors</p>
+        <div class="hero-actions">
+            <a href="https://github.com/dtcrompton/MLCO2" class="btn btn-secondary">View Code</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>As the UK's energy sector transitions towards renewable sources, quantifying the actual impact of that shift on CO₂ emissions is far from straightforward. Energy consumption data is high-dimensional, noisy, and shaped by factors ranging from industrial policy to seasonal weather patterns.</p>
+            <p>This project — completed as part of the Applied AI unit of my MSc in Computer Science & AI — used machine learning to explore whether predictive models could identify meaningful relationships between green energy adoption and carbon emissions, and which modelling approaches best handle the complexity of that relationship.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">5.84</div>
+                    <div class="stat-label">Best RMSE (Random Forest)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">31</div>
+                    <div class="stat-label">Data points post-merge</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Models compared</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1990–2020</div>
+                    <div class="stat-label">Dataset time range</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Primary Finding</h3>
+                <p>The pre-optimised Random Forest regressor outperformed all other configurations, achieving an RMSE of 5.84. Counterintuitively, hyperparameter optimisation via GridSearchCV <em>worsened</em> the Decision Tree model (RMSE rising from 10.13 to 17.70), while only marginally affecting Random Forest performance — demonstrating that ensemble methods are inherently more robust to overfitting on small datasets.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Data & Preprocessing</h2>
+            <p>Two datasets were merged on year and country to form the modelling dataset:</p>
+            <ul>
+                <li><strong>UK CO₂ emissions by source (1750–2021)</strong> — Ricardo Energy & Environment / ONS, providing annual emissions broken down by coal, oil, gas, and other sources</li>
+                <li><strong>UK energy consumption by type (1990–2020)</strong> — Kaggle, detailing renewable and non-renewable energy breakdown</li>
+            </ul>
+            <p>The merged dataset contained only 31 usable rows — a significant constraint acknowledged throughout the analysis. Extensive missing data ruled out interpolation and KNN imputation as reliable strategies; instead, selective deletion was used to preserve only years with reliable values across both datasets.</p>
+            <p>Preprocessing steps included one-hot encoding of the ISO country code (nominal attribute) for model compatibility, and exploratory data analysis to understand distributions and identify potential confounders.</p>
+
+            <div class="highlight-box">
+                <h3>Data Limitation — Flagged Upfront</h3>
+                <p>A dataset of 31 rows places hard limits on what any model can reliably learn. Results should be interpreted as a methodological demonstration rather than a production-ready forecasting tool. The study recommends future work incorporate larger, multi-country datasets with additional covariates including climate variables, regional policy data, and technology adoption rates.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Methodology</h2>
+            <ol class="methodology-steps">
+                <li>
+                    <h3>Feature Selection (Genetic Algorithm)</h3>
+                    <p>Genetic algorithms were used for feature selection — chosen over alternatives like Recursive Feature Elimination (RFE) for their global search capability, avoiding the local optima risk of hill-climbing approaches. The GA evaluated feature subsets across multiple generations and population sizes, identifying the most predictive variables for CO₂ emissions without the computational memory overhead of Tabu Search.</p>
+                    <p>A second model was built using only GA-selected features, enabling direct comparison against the full-feature model for efficiency and overfitting risk.</p>
+                </li>
+                <li>
+                    <h3>Model Training — Decision Tree Regressor</h3>
+                    <p>The primary model used a Decision Tree regressor, selected for its interpretability and natural handling of non-linear relationships — important when feature interactions in energy data are poorly understood. The 80/20 train/test split was combined with K-Fold cross-validation during training to reduce overfitting risk.</p>
+                    <p>GridSearchCV was applied for hyperparameter tuning, searching across combinations of max depth, min samples split, and min samples leaf on training data only, to prevent information leakage from the test set.</p>
+                </li>
+                <li>
+                    <h3>Model Comparison — Random Forest Regressor</h3>
+                    <p>A Random Forest regressor was introduced as a comparison model. Random Forest builds an ensemble of decision trees, each trained on a bootstrapped subset of data with random feature selection at each split — reducing the variance and instability that Decision Trees exhibit on small datasets.</p>
+                    <p>The same GridSearchCV optimisation was applied to Random Forest, and results compared across four configurations: DT pre/post-optimisation, RF pre/post-optimisation.</p>
+                </li>
+                <li>
+                    <h3>Evaluation</h3>
+                    <p>Models were evaluated using Root Mean Squared Error (RMSE) — preferred over MAE for its stronger penalisation of large errors, giving a sharper picture of generalisation quality. K-Fold cross-validation scores provided a secondary measure of stability across different training subsets.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Results</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Configuration</th>
+                        <th>RMSE</th>
+                        <th>CV Mean Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Decision Tree</td>
+                        <td>Pre-optimisation</td>
+                        <td>~10.13</td>
+                        <td>~-5.67</td>
+                    </tr>
+                    <tr>
+                        <td>Decision Tree</td>
+                        <td>Post-optimisation (GridSearchCV)</td>
+                        <td class="worse">17.70 ↑ worse</td>
+                        <td>~-5.28</td>
+                    </tr>
+                    <tr class="winner">
+                        <td>Random Forest</td>
+                        <td>Pre-optimisation ★ Best overall</td>
+                        <td class="better">5.84</td>
+                        <td>~-1.88</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>Post-optimisation (GridSearchCV)</td>
+                        <td>~6.39</td>
+                        <td>~-2.09</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The most striking result is that GridSearchCV optimisation made the Decision Tree <em>worse</em> — RMSE increased from 10.13 to 17.70 post-tuning. This likely reflects the model overfitting to the training set during the grid search, which had very little data to work with. With only 31 rows, even small changes to hyperparameters can dramatically shift performance.</p>
+            <p>The Random Forest pre-optimisation result (RMSE 5.84, CV ~-1.88) was the best across all configurations. The slight degradation post-optimisation — and the widening CV standard deviation — hints at the same overfitting dynamic: GridSearchCV is pushing parameters toward the training set at the expense of generalisation.</p>
+            <p>The CV mean scores tell a consistent story: Random Forest is substantially more stable than Decision Tree across folds (~-1.88 vs ~-5.67), confirming that ensemble diversity compensates for the dataset's small size in ways a single tree cannot.</p>
+        </div>
+
+        <div class="section">
+            <h2>Technical Approach</h2>
+
+            <h3>Why Decision Tree first?</h3>
+            <p>Decision Trees were the natural starting point for this dataset: they perform implicit feature selection (assigning importance scores via impurity reduction), handle non-linear relationships without transformation, and produce interpretable rules that can be interrogated directly. For a stakeholder-facing model — where explainability matters as much as accuracy — these properties are valuable.</p>
+            <p>The trade-off is well-documented: Decision Trees are sensitive to small changes in training data and prone to high variance, particularly on small samples. The results confirmed this.</p>
+
+            <h3>Why Genetic Algorithms for feature selection?</h3>
+            <p>RFE was considered but ruled out due to its computational intensity and risk of missing important feature interactions on a high-dimensional-relative-to-sample dataset. GAs search the full feature space globally, are less memory-dependent than Tabu Search, and avoid the local optima traps of hill-climbing methods. The cost is that they require careful parameter tuning (generations, population size) — which was explored across multiple combinations.</p>
+
+            <h3>The optimisation paradox</h3>
+            <p>The fact that the best-performing model was the <em>un-optimised</em> Random Forest is an important result in its own right. It illustrates that hyperparameter tuning is not inherently beneficial — on small datasets, GridSearchCV can overfit the tuning process itself. The practical implication: with limited data, simpler configurations and ensemble diversity are more reliable than exhaustive search.</p>
+        </div>
+
+        <div class="section">
+            <h2>Limitations & Future Work</h2>
+            <p>This study is honest about its constraints, and those constraints point directly toward what a more robust version of this work would look like:</p>
+            <ul>
+                <li><strong>Dataset size:</strong> 31 rows is insufficient for reliable generalisation. A multi-country dataset covering more years, with consistent data quality, would transform this from a methodological study into a genuinely predictive tool.</li>
+                <li><strong>Omitted variables:</strong> Climate variation, regional energy policy, technological adoption rates, and industrial structural shifts all influence CO₂ emissions and are absent from the model. Their omission risks confounding the energy-emissions relationship.</li>
+                <li><strong>Model scope:</strong> The study did not explore gradient boosting (XGBoost, LightGBM), which may perform better on small tabular datasets than either Decision Trees or Random Forests. Bayesian optimisation would also be a more efficient alternative to GridSearchCV for hyperparameter tuning.</li>
+                <li><strong>Time series structure:</strong> The dataset has inherent temporal ordering that standard train/test splitting ignores. Future work should use time-aware cross-validation (e.g., TimeSeriesSplit) and consider ARIMA or LSTM approaches for forecasting.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <p><strong>Language:</strong> Python</p>
+            <p><strong>Libraries:</strong> scikit-learn (DecisionTreeRegressor, RandomForestRegressor, GridSearchCV, KFold), pandas, numpy, matplotlib</p>
+            <p><strong>Feature selection:</strong> Genetic algorithms (custom implementation)</p>
+            <p><strong>Data sources:</strong> Ricardo Energy & Environment / ONS (CO₂ by source), Kaggle UK energy consumption dataset</p>
+            <p><strong>Context:</strong> MSc Computer Science & AI — Applied AI unit, University coursework</p>
+        </div>
+
+    </div>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary">View GitHub</a>
+            </div>
+            <div class="footer-links">
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a> ·
+                <a href="https://github.com/dtcrompton/MLCO2">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/">LinkedIn</a></p>
+    </footer>
+
+</body>
+</html>
