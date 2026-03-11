@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK National Parks Forest Cover Change | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* ============================================================
+           projects/forest/index.html — page-specific styles only
+           Shared styles loaded from /styles.css
+           ============================================================ */
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 100px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B794D9, #7FAD87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            text-align: center;
+        }
+
+        /* Per-park summary table */
+        .park-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1em;
+        }
+
+        .park-table th {
+            background: rgba(183, 148, 217, 0.15);
+            color: #B794D9;
+            padding: 14px 20px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(183, 148, 217, 0.3);
+        }
+
+        .park-table td {
+            padding: 14px 20px;
+            color: #c0c0c0;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.08);
+        }
+
+        .park-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .park-table tr:hover td {
+            background: rgba(183, 148, 217, 0.04);
+        }
+
+        .loss { color: #D9947F; }
+        .gain { color: #7FAD87; }
+
+        /* Methodology numbered steps */
+        .methodology-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .methodology-steps > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+
+        .methodology-steps > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #B794D9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .methodology-steps ul {
+            list-style: disc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .container { padding: 60px 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .map-pair { grid-template-columns: 1fr; }
+            .methodology-steps > li { padding-left: 50px; }
+            .methodology-steps > li::before { width: 35px; height: 35px; font-size: 1em; }
+            .park-table { font-size: 0.9em; }
+            .park-table th, .park-table td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body class="project-page">
+
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="https://dtcrompton.github.io/index.html">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>UK National Parks Forest Cover Change Analysis</h1>
+        <p class="tagline">Quantifying 24 years of forest loss and gain across four northern English national parks using Google Earth Engine and R</p>
+        <div class="hero-actions">
+            <a href="https://github.com/dtcrompton/earth-engine-gis-uk-parks" class="btn btn-secondary" target="_blank">View Code</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>UK national parks are often assumed to be stable, well-protected ecosystems. But forest cover within protected areas is subject to ongoing pressures — commercial forestry operations, storm damage, land use change, and the slow effects of climate stress on tree health. Understanding the actual trajectory of forest change requires moving beyond assumption and into the data.</p>
+            <p>This project used Google Earth Engine to process the Hansen Global Forest Change dataset across four northern English national parks, quantifying forest loss and gain from 2000 to 2024 and visualising the results in R. The goal was to build a reproducible remote sensing workflow applicable to any protected area, while generating concrete findings about the state of these four landscapes.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">National parks analysed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Years of data (2000–2024)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30m</div>
+                    <div class="stat-label">Spatial resolution</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">v1.12</div>
+                    <div class="stat-label">Hansen GFC dataset</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Primary Finding</h3>
+                <p>Forest loss substantially outpaced gain across all four parks over the 24-year period. Northumberland showed the highest proportional loss (~8% of park area), followed by North York Moors (~4.5%). Forest gain was minimal across all parks — well under 0.5% in each case — suggesting that natural regeneration and replanting are not keeping pace with losses at the timescales captured by this dataset.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Findings</h2>
+
+            <table class="park-table">
+                <thead>
+                    <tr>
+                        <th>National Park</th>
+                        <th>Forest Loss (% of park area)</th>
+                        <th>Forest Gain (% of park area)</th>
+                        <th>Net Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Northumberland</td>
+                        <td class="loss">~8.0%</td>
+                        <td class="gain">~0.3%</td>
+                        <td class="loss">Net loss</td>
+                    </tr>
+                    <tr>
+                        <td>North York Moors</td>
+                        <td class="loss">~4.5%</td>
+                        <td class="gain">~0.3%</td>
+                        <td class="loss">Net loss</td>
+                    </tr>
+                    <tr>
+                        <td>Yorkshire Dales</td>
+                        <td class="loss">~2.1%</td>
+                        <td class="gain">&lt;0.1%</td>
+                        <td class="loss">Net loss</td>
+                    </tr>
+                    <tr>
+                        <td>Lake District</td>
+                        <td class="loss">~1.9%</td>
+                        <td class="gain">~0.1%</td>
+                        <td class="loss">Net loss</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The contrast between Northumberland and the other three parks is striking. Northumberland National Park contains significant Kielder Forest plantation — the largest man-made forest in England — and the high loss figures likely reflect commercial felling cycles rather than ecological degradation. This is an important distinction the data alone cannot resolve: loss in Hansen GFC records any canopy removal above a 30% threshold, regardless of whether it is planned harvesting or unplanned disturbance.</p>
+
+            <div class="image-container">
+                <img src="forest_barplot.png" alt="Forest change bar chart by national park">
+                <p class="image-caption">Forest loss and gain as a percentage of park area for each of the four national parks, 2000–2024</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Methodology</h2>
+            <ol class="methodology-steps">
+                <li>
+                    <h3>Data Acquisition (Google Earth Engine — JavaScript)</h3>
+                    <p>Protected area boundaries were sourced from the World Database on Protected Areas (WDPA), filtered to English national parks using <code>DESIG_ENG = "National Park"</code>. The Hansen Global Forest Change dataset (v1.12, 2000–2024) was imported and its forest loss and gain layers extracted at 30m resolution.</p>
+                    <p>Results were reduced to park polygons using zonal statistics, then exported as CSV to Google Drive — with geometry fields excluded to keep file sizes manageable. The export selected only the required columns: park name, GIS area, and aggregated pixel sums for loss and gain.</p>
+                </li>
+                <li>
+                    <h3>Spatial Visualisation (Google Earth Engine)</h3>
+                    <p>Loss and gain layers were visualised in the GEE map interface across the full England and Wales national parks extent to check spatial patterns before extracting statistics. Loss pixels were concentrated in the upland north — particularly across Northumberland and the North York Moors — with scattered smaller patches across the Lake District and Yorkshire Dales. Gain pixels were sparse throughout, with no park showing meaningful spatial clustering of new forest establishment.</p>
+                </li>
+                <li>
+                    <h3>Statistical Analysis and Visualisation (R)</h3>
+                    <p>The exported CSVs were loaded into R, where loss and gain tables were joined and normalised by park area to produce comparable percentage figures. Large geometry fields embedded in some CSV exports were handled prior to plotting to prevent parsing errors.</p>
+                    <p>The final bar chart was produced using ggplot2, presenting loss and gain side by side for each park to make the asymmetry immediately legible.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Technical Approach</h2>
+
+            <h3>Why Hansen Global Forest Change?</h3>
+            <p>The Hansen GFC dataset is the standard global reference for forest cover change analysis — produced by the University of Maryland and updated annually, it provides consistent 30m Landsat-derived canopy cover data from 2000 onwards. Its integration into Google Earth Engine makes large-scale zonal analysis straightforward, and its long time series (now 24 years) enables meaningful trend detection rather than snapshot comparison.</p>
+            <p>The key limitation is the 30% canopy threshold for defining "forest" — areas with sparse or low canopy cover may not be captured, and the dataset does not distinguish between tree types (plantation vs. native woodland) or the cause of loss (felling vs. storm damage vs. disease).</p>
+
+            <h3>Why Google Earth Engine?</h3>
+            <p>Processing Hansen GFC data at national park scale locally would require downloading and managing multi-gigabyte raster files. GEE performs the zonal reduction server-side, exporting only the aggregated statistics needed — making the workflow fast, reproducible, and accessible without specialist hardware.</p>
+
+            <h3>Interpreting the Northumberland result</h3>
+            <p>The ~8% loss figure for Northumberland warrants careful interpretation. Kielder Forest — at 250 square miles the largest forest in England — sits within and around the national park boundary, and commercial felling of Sitka spruce plantation is routine and ongoing. Hansen GFC records this as "loss" even though replanting typically follows. A more complete analysis would cross-reference the loss pixels with Forestry England felling licence data to separate planned harvesting from unplanned disturbance.</p>
+        </div>
+
+        <div class="section">
+            <h2>Limitations & Future Work</h2>
+            <ul>
+                <li><strong>Loss ≠ degradation:</strong> Hansen GFC loss includes planned commercial felling, which is not ecologically equivalent to deforestation. Separating the two requires cross-referencing with felling licence records or land use datasets.</li>
+                <li><strong>Gain underestimation:</strong> The Hansen gain layer captures forest establishment between 2000 and 2012 only — it is not updated annually in the same way as the loss layer. Post-2012 regeneration and replanting are therefore not reflected, meaning net change figures likely understate recovery.</li>
+                <li><strong>No species composition:</strong> The dataset treats all canopy equally. Distinguishing native broadleaf woodland from commercial conifer plantation would require additional land cover datasets (e.g. National Forest Inventory).</li>
+                <li><strong>Temporal resolution:</strong> Annual loss data could be used to plot change over time rather than aggregate totals, potentially identifying specific years with unusually high loss linked to storm events, drought, or policy changes.</li>
+                <li><strong>Extension to all UK national parks:</strong> The WDPA filter makes it straightforward to extend this analysis to all 15 UK national parks — a natural next step for a more comprehensive national picture.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <p><strong>Platforms:</strong> Google Earth Engine, R</p>
+            <p><strong>Languages:</strong> JavaScript (GEE), R</p>
+            <p><strong>R Packages:</strong> ggplot2, dplyr, tidyr</p>
+            <p><strong>Data Sources:</strong> Hansen Global Forest Change v1.12 (University of Maryland), World Database on Protected Areas (WDPA)</p>
+        </div>
+
+    </div>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary">View GitHub</a>
+            </div>
+            <div class="footer-links">
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a> ·
+                <a href="https://github.com/dtcrompton/earth-engine-gis-uk-parks">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/">LinkedIn</a></p>
+    </footer>
+
+</body>
+</html>
