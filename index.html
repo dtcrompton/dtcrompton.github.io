@@ -4,35 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Crompton | Environmental Data Scientist</title>
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         html {
             scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background-color: #1a1a1a;
+            line-height: 1.6; /* homepage uses tighter line-height than project pages */
         }
-        
-        /* Navigation */
+
+        /* Navigation — fixed on homepage */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
         }
-        
+
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -42,31 +30,34 @@
             align-items: center;
             height: 70px;
         }
-        
+
         .nav-name {
             font-size: 1.3em;
             font-weight: 600;
             color: #B794D9;
         }
-        
+
         nav ul {
             list-style: none;
             display: flex;
             gap: 40px;
         }
-        
+
         nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: #e0e0e0; /* homepage nav links are light, not purple */
             font-size: 0.95em;
         }
-        
+
         nav a:hover {
             color: #B794D9;
         }
-        
+
+        /* Button size override — homepage uses smaller buttons */
+        .btn {
+            padding: 10px 24px;
+            font-size: 0.9em;
+        }
+
         /* Hero */
         #hero {
             min-height: 100vh;
@@ -77,7 +68,7 @@
             padding: 160px 40px 80px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
         }
-        
+
         #hero h1 {
             font-size: 4.5em;
             margin-bottom: 5px;
@@ -87,7 +78,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         #hero .tagline {
             font-size: 1.65em;
             color: #b0b0b0;
@@ -95,7 +86,7 @@
             margin: 0 auto 40px;
             line-height: 1.6;
         }
-        
+
         .hero-cta {
             display: inline-block;
             padding: 15px 40px;
@@ -107,66 +98,66 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(183, 148, 217, 0.3);
         }
-        
+
         .hero-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(183, 148, 217, 0.4);
         }
-        
+
         /* Sections */
         section {
             padding: 80px 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .section-title {
             font-size: 2.5em;
             margin-bottom: 50px;
             color: #ffffff;
             font-weight: 700;
         }
-        
+
         /* About */
         #about {
             background: #1a1a1a;
         }
-        
+
         .about-container {
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 60px;
             align-items: center;
         }
-        
+
         .about-photo {
             width: 100%;
             border-radius: 16px;
             border: 3px solid rgba(183, 148, 217, 0.3);
         }
-        
+
         .about-content {
             font-size: 1.15em;
             line-height: 1.8;
             color: #b0b0b0;
         }
-        
+
         .about-content p {
             margin-bottom: 25px;
         }
-        
+
         /* Projects */
         #projects {
             background: #1f1f1f;
         }
-        
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 40px;
             margin-top: 20px;
         }
-        
+
         .project-card {
             background: #2a2a2a;
             border-radius: 16px;
@@ -174,51 +165,51 @@
             transition: all 0.4s ease;
             border: 1px solid rgba(183, 148, 217, 0.1);
         }
-        
+
         .project-card:hover {
             box-shadow: 0 0 40px rgba(183, 148, 217, 0.3);
             border-color: rgba(183, 148, 217, 0.4);
         }
-        
+
         .project-card:hover .project-image img {
             transform: scale(1.05);
         }
-        
+
         .project-image {
             height: 280px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
-        
+
         .project-status {
             display: none;
         }
-        
+
         .project-content {
             padding: 30px;
         }
-        
+
         .project-content h3 {
             color: #ffffff;
             margin-bottom: 12px;
             font-size: 1.5em;
             font-weight: 600;
         }
-        
+
         .project-content p {
             color: #b0b0b0;
             margin-bottom: 18px;
             line-height: 1.7;
             font-size: 0.95em;
         }
-        
+
         .key-outcome {
             background: rgba(183, 148, 217, 0.1);
             border-left: 3px solid #B794D9;
@@ -227,18 +218,18 @@
             color: #e0e0e0;
             font-size: 0.9em;
         }
-        
+
         .key-outcome strong {
             color: #B794D9;
         }
-        
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 20px;
         }
-        
+
         .tag {
             background: rgba(127, 173, 135, 0.2);
             color: #7FAD87;
@@ -248,56 +239,24 @@
             font-weight: 500;
             border: 1px solid rgba(127, 173, 135, 0.3);
         }
-        
+
         .project-links {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
         }
-        
-        .btn {
-            padding: 10px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #B794D9, #9f7dc7);
-            color: white;
-            box-shadow: 0 4px 8px rgba(183, 148, 217, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(183, 148, 217, 0.4);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, #6B8E71, #7a9d80);
-            color: white;
-            box-shadow: 0 4px 8px rgba(107, 142, 113, 0.3);
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(107, 142, 113, 0.4);
-        }
-        
+
         /* Skills */
         #skills {
             background: #1a1a1a;
         }
-        
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
-        
+
         .skill-category {
             background: #2a2a2a;
             padding: 40px 35px;
@@ -305,23 +264,23 @@
             border: 1px solid rgba(183, 148, 217, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .skill-category:hover {
             border-color: rgba(183, 148, 217, 0.3);
             transform: translateY(-5px);
         }
-        
+
         .skill-category h3 {
             color: #B794D9;
             margin-bottom: 25px;
             font-size: 1.4em;
             font-weight: 600;
         }
-        
+
         .skill-category ul {
             list-style: none;
         }
-        
+
         .skill-category li {
             padding: 8px 0;
             color: #b0b0b0;
@@ -329,7 +288,7 @@
             position: relative;
             padding-left: 25px;
         }
-        
+
         .skill-category li::before {
             content: '→';
             position: absolute;
@@ -337,70 +296,19 @@
             color: #7FAD87;
             font-weight: bold;
         }
-        
-        /* Contact */
-        #contact {
-            background: #1f1f1f;
-            text-align: center;
-        }
-        
-        .contact-content p {
-            font-size: 1.2em;
-            color: #b0b0b0;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .contact-links .btn {
-            min-width: 220px;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            border-top: 1px solid rgba(183, 148, 217, 0.1);
-            padding: 30px 40px;
-            text-align: center;
-        }
-        
-        footer p {
-            color: #808080;
-            font-size: 0.9em;
-        }
-        
-        footer a {
-            color: #B794D9;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: #c5a8e6;
-        }
-        
+
         /* LinkedIn icon hover */
         a[href*="linkedin.com"] svg {
             transition: all 0.3s ease;
         }
-
         a[href*="linkedin.com"]:hover svg {
             transform: scale(1.1);
         }
-
         a[href*="linkedin.com"]:hover path {
             fill: #c5a8e6;
         }
-        
-        /* Sidebar Navigation */
+
+        /* Sidebar dot navigation */
         .sidebar-nav {
             position: fixed;
             right: 40px;
@@ -449,56 +357,23 @@
         .sidebar-nav a:hover::after {
             opacity: 1;
         }
-        
+
         /* Responsive */
         @media (max-width: 1024px) {
-            .sidebar-nav {
-                display: none;
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .about-photo {
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .sidebar-nav { display: none; }
+            .about-container { grid-template-columns: 1fr; gap: 40px; }
+            .about-photo { max-width: 300px; margin: 0 auto; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
-        
+
         @media (max-width: 768px) {
-            #hero {
-                padding: 140px 20px 60px;
-            }
-            
-            #hero h1 {
-                font-size: 3em;
-            }
-            
-            #hero .tagline {
-                font-size: 1.2em;
-            }
-            
-            nav ul {
-                gap: 20px;
-            }
-            
-            .nav-container {
-                padding: 0 20px;
-            }
-            
-            section {
-                padding: 60px 20px;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+            #hero { padding: 140px 20px 60px; }
+            #hero h1 { font-size: 3em; }
+            #hero .tagline { font-size: 1.2em; }
+            nav ul { gap: 20px; }
+            .nav-container { padding: 0 20px; }
+            section { padding: 60px 20px; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
