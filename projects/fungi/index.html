@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeds Fungal Biodiversity | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* ============================================================
+           projects/fungi/index.html — page-specific styles only
+           Shared styles loaded from /styles.css
+           ============================================================ */
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 100px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B794D9, #7FAD87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            text-align: center;
+        }
+
+        /* Methodology numbered steps */
+        .methodology-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .methodology-steps > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+
+        .methodology-steps > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #B794D9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .methodology-steps ul {
+            list-style: disc;
+        }
+
+        /* Two-column figure layout */
+        .figure-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .figure-pair .image-container {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .container { padding: 60px 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .figure-pair { grid-template-columns: 1fr; }
+            .methodology-steps > li { padding-left: 50px; }
+            .methodology-steps > li::before { width: 35px; height: 35px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body class="project-page">
+
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="https://dtcrompton.github.io/index.html">← Back to Portfolio</a>
+        </div>
+        <div class="nav-right">
+            <a href="map.html">Interactive Map</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Leeds Fungal Biodiversity Analysis</h1>
+        <p class="tagline">Investigating whether urban tree planting schemes support fungal diversity recovery — using citizen science data to challenge assumptions in restoration ecology</p>
+        <div class="hero-actions">
+            <a href="map.html" class="btn btn-primary">Interactive Map</a>
+            <a href="explainer.html" class="btn btn-primary">Stakeholder Explainer</a>
+            <a href="https://github.com/dtcrompton/leeds-brownfield-fungal-recovery" class="btn btn-secondary" target="_blank">View Code</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>Urban tree planting is widely promoted as a nature-based solution — a way to restore biodiversity, sequester carbon, and improve ecological connectivity in cities. Leeds has seen significant planting activity since 2020, including 160 hectares at Broughton Sanctuary and 62,500 trees across South Leeds between 2021 and 2022.</p>
+            <p>But there is a question that rarely gets asked: what happens to fungal communities when you plant trees? Mycorrhizal fungi — the underground networks that trees depend on for nutrient exchange — require decades to establish in mature, complex networks. Soil disturbance during planting severs existing hyphal connections, and nursery-grown saplings are often uninoculated, arriving without the fungal partners they need.</p>
+            <p>This project used GBIF citizen science records to analyse fungal biodiversity in Leeds from 2009 to 2025, asking whether the 2020–2023 planting programmes correlated with the expected increase in fungal diversity — or something more complicated.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">2009–2025</div>
+                    <div class="stat-label">Dataset time range</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Functional groups classified</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3,000+</div>
+                    <div class="stat-label">Records mapped</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2020</div>
+                    <div class="stat-label">Year disruption begins</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Primary Finding</h3>
+                <p>Rather than increasing after tree planting, fungal diversity declined. Rarefied species richness peaked around 2015–2017 and has fallen steadily since 2020, with the GAM trend showing a clear post-planting downturn. Mycorrhizal proportion has dropped while saprotrophic fungi — decomposers that thrive in disturbed soils — have increased their relative share. This pattern is consistent with short-term mycorrhizal network disruption caused by soil disturbance during planting, not ecological recovery.</p>
+                <p>This is a stronger finding than a simple confirmation would have been. It suggests that tree planting without mycorrhizal inoculation, and without protecting existing mature woodland networks, may cause a net fungal loss in the short term — a significant caveat for carbon offsetting schemes that rely on above-ground biomass while ignoring the underground ecosystem.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Findings</h2>
+
+            <h3>Species Richness Decline Post-2020</h3>
+            <p>Raw species richness shows high inter-annual variability, partly driven by recording effort — including a pronounced spike in 2020 likely attributable to increased outdoor activity during the COVID-19 lockdowns. Rarefaction was applied to correct for unequal sampling effort, normalising counts to a consistent sample size per year.</p>
+            <p>After effort correction, the underlying trend is clear: species richness rose gradually from 2009, peaked in the mid-2010s, and has declined sharply from 2020 onwards. The GAM (Generalised Additive Model) smooth confirms this is a genuine non-linear trend, not sampling noise.</p>
+
+            <div class="figure-pair">
+                <div class="image-container">
+                    <img src="species_richness_trend.png" alt="Fungal species richness trend 2009–2025">
+                    <p class="image-caption">Raw species richness with linear trend — high variability masks the underlying signal</p>
+                </div>
+                <div class="image-container">
+                    <img src="rarefaction_comparison.png" alt="Original vs rarefied species richness">
+                    <p class="image-caption">Rarefaction corrects for unequal recording effort, including the 2020 COVID spike</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="gam_trend.png" alt="GAM trend in rarefied species richness">
+                <p class="image-caption">GAM smooth confirms a non-linear trend — peak diversity mid-2010s, clear decline from 2020</p>
+            </div>
+
+            <h3>Shannon Diversity Index</h3>
+            <p>The Shannon Diversity Index — which accounts for both species richness and the evenness of their distribution — tells a consistent story. Values were relatively stable through the 2010s, with a brief peak around 2020, before declining sharply from 2021 onwards. The confidence interval widens towards 2025, reflecting reduced data density in the most recent years, but the downward trend is unambiguous.</p>
+
+            <div class="image-container">
+                <img src="shannon_diversity.png" alt="Shannon Diversity Index over time">
+                <p class="image-caption">Shannon Diversity Index — combines richness and evenness. Sharp decline from 2021 onwards</p>
+            </div>
+
+            <h3>Functional Group Composition Shift</h3>
+            <p>Perhaps the most telling finding is the shift in functional composition. Mycorrhizal fungi — the tree-dependent species that form underground networks — have declined as a proportion of total records from around 25–30% in 2009 to roughly 10–15% by 2023–2025. Saprotrophic fungi, which decompose dead organic matter and are associated with disturbed or early-successional soils, have increased their relative share.</p>
+            <p>This is precisely the pattern you would expect if soil disturbance during tree planting was disrupting existing mycorrhizal networks: decomposers colonise disturbed ground quickly, while mycorrhizal species, which require host trees and intact soil structure, take years to re-establish.</p>
+
+            <div class="image-container">
+                <img src="functional_composition.png" alt="Functional group composition over time">
+                <p class="image-caption">Mycorrhizal proportion declining while saprotrophic fungi increase — consistent with soil disturbance</p>
+            </div>
+
+            <h3>Tree Planting Correlation</h3>
+            <p>Overlaying Leeds tree planting data against rarefied species richness makes the timing of the disruption explicit. Diversity was broadly stable through the 2010s, then declined in step with the major planting programmes beginning in 2020. The data ends in 2025, three to five years post-planting — well within the 5–10 year window that mycorrhizal network re-establishment typically requires.</p>
+
+            <div class="image-container">
+                <img src="restoration_correlation.png" alt="Tree planting vs fungal species richness">
+                <p class="image-caption">Tree planting volumes overlaid with rarefied species richness — diversity declines in step with planting activity</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Methodology</h2>
+            <ol class="methodology-steps">
+                <li>
+                    <h3>Data Acquisition (GBIF API)</h3>
+                    <p>Fungal occurrence records for Leeds were downloaded via the GBIF API, filtered to the Leeds administrative boundary and the period 2009–2025. Records were cleaned to remove duplicates, observations without valid coordinates, and entries lacking species-level identification.</p>
+                </li>
+                <li>
+                    <h3>Functional Group Classification (Python)</h3>
+                    <p>Each species was assigned to one of four functional groups — Mycorrhizal, Saprotrophic, Parasitic, or Other/Unknown — using a lookup table cross-referenced against established fungal trait databases. Mycorrhizal classification focused on ectomycorrhizal and arbuscular mycorrhizal species known to associate with broadleaf and conifer hosts common in urban Leeds.</p>
+                </li>
+                <li>
+                    <h3>Temporal Analysis (R)</h3>
+                    <p>Annual species richness was calculated and rarefied to correct for unequal recording effort across years. Rarefaction standardises counts to the minimum annual sample size, making year-on-year comparisons meaningful regardless of how many records were submitted in a given year.</p>
+                    <p>Shannon Diversity Index was calculated per year to capture both richness and evenness. A Generalised Additive Model (GAM) was fitted to the rarefied richness series using the <code>mgcv</code> package in R, allowing the smooth to capture non-linear temporal trends without imposing a parametric shape.</p>
+                </li>
+                <li>
+                    <h3>Functional Composition Analysis (R)</h3>
+                    <p>Annual proportions of each functional group were calculated and plotted as a stacked area chart to visualise compositional shifts over time. This approach shows not just whether diversity changed, but which ecological guilds drove the change.</p>
+                </li>
+                <li>
+                    <h3>Restoration Correlation (R)</h3>
+                    <p>Leeds City Council tree planting data was collated for the 2020–2025 period, including the Broughton Sanctuary scheme (160 hectares, December 2020) and the South Leeds urban forestry programme (62,500 trees, 2021–2022). Annual planting volumes were overlaid against rarefied species richness on a dual-axis chart to visualise the temporal relationship.</p>
+                </li>
+                <li>
+                    <h3>Interactive Mapping (Python, Folium)</h3>
+                    <p>An interactive web map was produced showing the spatial distribution of all GBIF records, colour-coded by functional group. The map allows users to explore recording locations, filter by functional group, and click individual markers for species-level detail.</p>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>The Bigger Picture</h2>
+
+            <h3>Why this matters for carbon offsetting</h3>
+            <p>Most carbon offsetting schemes that involve tree planting focus exclusively on above-ground biomass — the carbon stored in trunks, branches, and leaves. Mycorrhizal networks are estimated to store around 30% of forest carbon in below-ground biomass and soil organic matter. When established woodland is cleared to make way for development, and saplings are planted elsewhere as mitigation, the fungal carbon pool may be net negative for a decade or more.</p>
+            <p>This is not an argument against tree planting. It is an argument for doing it better: inoculating nursery stock with appropriate mycorrhizal species, minimising soil disturbance during establishment, protecting existing mature woodlands whose networks are irreplaceable on any practical timescale, and monitoring below-ground ecosystem recovery alongside above-ground growth.</p>
+
+            <h3>Citizen science as ecological data</h3>
+            <p>This analysis relies entirely on voluntary GBIF observations — records submitted by amateur mycologists and naturalists walking the same parks and woodlands year after year. That recording effort is itself shaped by human behaviour (hence the 2020 COVID spike), and the dataset skews towards charismatic, easily-identified species. It is not a systematic ecological survey.</p>
+            <p>Nevertheless, the temporal signal is strong enough to be visible through the noise, and the functional composition shift is exactly what the mycorrhizal disruption hypothesis would predict. Citizen science data, properly handled with effort correction and appropriate statistical methods, can surface ecologically meaningful patterns even at city scale.</p>
+        </div>
+
+        <div class="section">
+            <h2>Limitations & Future Work</h2>
+            <ul>
+                <li><strong>Observational data only:</strong> GBIF records reflect where people look, not just where fungi are. Spatial and temporal biases in recording effort cannot be fully removed by rarefaction alone.</li>
+                <li><strong>Short post-planting window:</strong> The data ends in 2025, only 3–5 years after the major planting schemes. Mycorrhizal network re-establishment takes 5–10 years — continued monitoring is essential to determine whether diversity recovers.</li>
+                <li><strong>No soil sampling:</strong> Confirming mycorrhizal network disruption would require physical soil core analysis — DNA metabarcoding can identify fungal communities at species level from soil samples, providing ground truth that citizen science records cannot.</li>
+                <li><strong>Spatial resolution:</strong> The analysis treats Leeds as a single unit. A spatially resolved version — comparing fungal diversity near planting sites vs. control areas — would provide much stronger causal evidence.</li>
+                <li><strong>Inoculation data:</strong> It is not known whether any of the Leeds planting schemes used mycorrhizal-inoculated stock. If some did and some did not, comparing outcomes would be a valuable natural experiment.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <p><strong>Data source:</strong> GBIF (Global Biodiversity Information Facility) citizen science records</p>
+            <p><strong>Languages:</strong> Python, R</p>
+            <p><strong>Python libraries:</strong> pandas, Folium, requests (GBIF API)</p>
+            <p><strong>R packages:</strong> vegan (rarefaction, diversity indices), mgcv (GAM), ggplot2, dplyr, tidyr</p>
+            <p><strong>Mapping:</strong> Folium (interactive web map)</p>
+        </div>
+
+    </div>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary">View GitHub</a>
+            </div>
+            <div class="footer-links">
+                <a href="map.html">Interactive Map</a> ·
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a> ·
+                <a href="https://github.com/dtcrompton/leeds-brownfield-fungal-recovery">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/">LinkedIn</a></p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leeds Fungal Biodiversity — Stakeholder Explainer | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* ============================================================
+           projects/fungi/explainer.html — page-specific styles only
+           Shared styles loaded from /styles.css
+           ============================================================ */
+
+        .document {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: #1a1a1a;
+            padding: 60px;
+            text-align: left;
+        }
+
+        .doc-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(183, 148, 217, 0.3);
+        }
+
+        .doc-header h1 {
+            font-size: 2.2em;
+            color: #B794D9;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .doc-header .subtitle {
+            font-size: 1.2em;
+            color: #7FAD87;
+            font-weight: 500;
+        }
+
+        .doc-header .meta {
+            font-size: 0.95em;
+            color: #808080;
+            margin-top: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(127, 173, 135, 0.3);
+        }
+
+        @media print {
+            body { background: white; color: #333; text-align: left; }
+            .document {
+                max-width: 100%;
+                margin: 0;
+                padding: 40px;
+                background: white;
+                box-shadow: none;
+                border: none;
+            }
+            nav, #contact, footer, .no-print { display: none; }
+            h1, h2, h3 { color: #333; }
+            p, li { color: #333; }
+        }
+
+        @media (max-width: 768px) {
+            .document { margin: 30px 20px; padding: 40px 30px; }
+            .stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="project-page">
+
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="index.html">← Project Details</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="document">
+        <div class="doc-header">
+            <h1>Leeds Fungal Biodiversity</h1>
+            <div class="subtitle">What Urban Tree Planting Is Doing to the Underground Ecosystem</div>
+            <div class="meta">Stakeholder Explainer | Daniel Crompton | 2026</div>
+        </div>
+
+        <h2>What This Analysis Does</h2>
+        <p>This project analyses 16 years of fungal biodiversity records in Leeds (2009–2025) to assess whether recent urban tree planting programmes have supported or disrupted fungal communities — particularly the mycorrhizal fungi that trees depend on to survive and thrive.</p>
+        <p>Using citizen science records from GBIF and statistical methods to correct for recording effort, the analysis identifies a clear trend: fungal diversity has declined since the major Leeds planting schemes began in 2020, not increased. The pattern is consistent with short-term mycorrhizal network disruption caused by soil disturbance during planting.</p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">Post-2020</div>
+                <div class="stat-label">When diversity decline begins — coinciding with major planting schemes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5–10 years</div>
+                <div class="stat-label">Typical time for mycorrhizal networks to re-establish after soil disturbance</div>
+            </div>
+        </div>
+
+        <h2>What We Found</h2>
+
+        <h3>Diversity Declined After Tree Planting</h3>
+        <p>Fungal species richness, corrected for recording effort, peaked in the mid-2010s and has fallen steadily since 2020. The Shannon Diversity Index — which accounts for both the number of species and how evenly they are distributed — shows the same pattern. A statistical trend model (GAM) confirms this is a genuine underlying shift, not sampling noise.</p>
+
+        <h3>The Wrong Fungi Are Increasing</h3>
+        <p>The composition of fungal communities has shifted in a telling direction. Mycorrhizal fungi — the species that form symbiotic networks with tree roots and are essential for forest health — have declined as a proportion of total records. Saprotrophic fungi — decomposers that thrive in disturbed soils — have increased. This is precisely what you would expect if soil disturbance during planting was disrupting established underground networks.</p>
+
+        <div class="highlight-box">
+            <h3>The Restoration Paradox</h3>
+            <p>Tree planting intended to restore biodiversity may be causing a net loss of fungal diversity in the short term. Soil disturbance severs mycorrhizal hyphal networks that have taken decades to establish. Young nursery-grown trees often lack mycorrhizal inoculation, arriving without the fungal partners they need. The result: a 5–10 year disruption window before networks begin to re-establish — if they do at all.</p>
+        </div>
+
+        <h2>Why This Matters</h2>
+
+        <h3>Carbon Offsetting May Be Overestimated</h3>
+        <p>Most carbon offsetting schemes that involve tree planting count only above-ground biomass — the carbon in trunks, branches, and leaves. Mycorrhizal networks store an estimated 30% of forest carbon below ground, in fungal biomass and the soil organic matter they help build. When established woodland is cleared for development and saplings are planted elsewhere as mitigation, the fungal carbon pool may be net negative for a decade or more. The offset is not as clean as the numbers suggest.</p>
+
+        <h3>Mature Woodland Is Irreplaceable on Human Timescales</h3>
+        <p>An ancient woodland with complex mycorrhizal networks cannot be replicated by planting saplings. The networks themselves — the species diversity, the inter-tree connections, the soil structure they depend on — take decades or centuries to develop. Once destroyed, they cannot be quickly restored. Protecting existing mature woodland should be treated as a higher priority than planting new trees elsewhere as compensation.</p>
+
+        <h2>What Better Practice Looks Like</h2>
+        <ul>
+            <li><strong>Mycorrhizal inoculation of nursery stock:</strong> Trees grown in sterile nursery conditions often lack fungal partners. Inoculating root balls with appropriate mycorrhizal species before planting significantly improves establishment and reduces the disruption window.</li>
+            <li><strong>Minimising soil disturbance:</strong> Mechanical ground preparation breaks hyphal networks across wide areas. Where possible, hand-planting with minimal soil disturbance preserves more of the existing fungal community.</li>
+            <li><strong>Long-term monitoring:</strong> The Leeds data ends at 2025 — only 3–5 years post-planting. Continued monitoring for at least 10 years is needed to determine whether diversity recovers, and at what rate.</li>
+            <li><strong>Protecting existing networks:</strong> Where development is unavoidable, the strongest mitigation is protecting the closest intact woodland, not planting an equivalent area of saplings elsewhere.</li>
+        </ul>
+
+        <h2>Important Caveats</h2>
+        <p>This analysis is based on citizen science observations, not systematic ecological surveys. Recording effort varies year to year and statistical corrections cannot remove all bias. The findings indicate a pattern consistent with mycorrhizal disruption — they do not prove causation. Soil core analysis using DNA metabarcoding would be required to confirm the underground community changes directly.</p>
+        <p>The data also ends too soon to know whether recovery is under way. The 2025 figures may represent the trough of disruption, with diversity beginning to recover as planted trees mature. Continued data collection is essential.</p>
+
+        <h2>Access the Data</h2>
+        <ul>
+            <li><strong>Interactive map:</strong> <a href="map.html">Explore recording locations by functional group</a></li>
+            <li><strong>Full technical write-up:</strong> <a href="index.html">Methodology, charts, and detailed findings</a></li>
+            <li><strong>Code repository:</strong> <a href="https://github.com/dtcrompton/leeds-brownfield-fungal-recovery" target="_blank">Full analysis code on GitHub</a></li>
+        </ul>
+
+        <p class="no-print" style="margin-top: 40px;">
+            <a href="javascript:window.print()" class="btn btn-secondary">Print / Save as PDF</a>
+        </p>
+
+    </div>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and ecological restoration</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary">View GitHub</a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Project Details</a> ·
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a> ·
+                <a href="https://github.com/dtcrompton/leeds-brownfield-fungal-recovery">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/">LinkedIn</a></p>
+    </footer>
+
+</body>
+</html>
