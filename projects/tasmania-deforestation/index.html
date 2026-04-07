@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasmania Deforestation Detection | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Page container */
+        .project-container {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding: 0 60px 80px;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 60px 0 80px;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #B794D9;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.4em;
+            color: #7FAD87;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .hero .meta {
+            font-size: 1.05em;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .stat-box {
+            background: #1f1f1f;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(127, 173, 135, 0.3);
+            text-align: center;
+        }
+
+        /* Content sections */
+        .content-section {
+            margin: 60px 0;
+        }
+
+        /* Image containers */
+        .image-full {
+            margin: 50px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+        }
+
+        .image-full img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Key point box */
+        .key-point {
+            background: rgba(127, 173, 135, 0.1);
+            border-left: 4px solid #7FAD87;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .key-point p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Technical details box */
+        .tech-box {
+            background: #2a2a2a;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .tech-box h4 {
+            color: #B794D9;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .tech-box ul {
+            margin-left: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-container { padding: 0 30px 60px; }
+            .hero h1 { font-size: 2.2em; }
+            .hero .tagline { font-size: 1.2em; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="project-page">
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="https://dtcrompton.github.io/index.html">← Portfolio</a>
+        </div>
+        <div class="nav-right">
+            <a href="map.html">Interactive Map</a>
+            <a href="explainer.html">Stakeholder Summary</a>
+        </div>
+    </nav>
+
+    <div class="project-container">
+        <section class="hero">
+            <h1>Tasmania Deforestation Detection</h1>
+            <p class="tagline">CNN-based classification of forest loss from Sentinel-2 satellite imagery</p>
+            <p class="meta">Central Tasmania, 2019–2024 | TensorFlow, GeoPandas, Google Earth Engine</p>
+            
+            <div class="hero-actions">
+                <a href="map.html" class="btn btn-primary">View Interactive Map</a>
+                <a href="https://github.com/dtcrompton/tasmania-deforestation-detection" class="btn btn-secondary" target="_blank">View Code on GitHub</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Project Overview</h2>
+            <p>This project classifies forest loss events in central Tasmania using a convolutional neural network trained on Sentinel-2 satellite imagery, distinguishing clearcut logging from fire-driven loss. Predictions are cross-referenced with land tenure boundaries to identify spatial patterns and flag potential violations in protected areas.</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">736</div>
+                    <div class="stat-label">Forest loss points analysed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3.5%</div>
+                    <div class="stat-label">Clearcut logging rate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">Clearcuts in permitted zones</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">37%</div>
+                    <div class="stat-label">2024 clearcut spike</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Key Findings</h2>
+            
+            <div class="key-point">
+                <p><strong>Fire, not logging, dominates forest loss in central Tasmania.</strong></p>
+                <p>Only 3.5% of detected forest loss (26 of 736 patches) was clearcut logging. The remainder was predominantly fire-driven, particularly from the 2019 and 2023 bushfire seasons. This suggests fire management — not logging enforcement — should be the priority for forest protection in this region.</p>
+            </div>
+
+            <p><strong>2024 shows a concerning spike:</strong> Clearcut rate jumped to 37% in 2024, compared to less than 2% in fire-heavy years (2019, 2023). This indicates recent logging activity has increased significantly.</p>
+
+            <p><strong>Spatial distribution aligns with permitted zones:</strong> 96% of predicted clearcuts (25 of 26) fall within PTPZ (Private Timber Reserve Zones) where logging is permitted. Only 1 clearcut was detected in protected reserves, flagged for further investigation.</p>
+
+            <div class="image-full">
+                <img src="predictions_by_year.png" alt="Forest loss predictions by year showing 2024 spike">
+                <p class="image-caption">Forest loss by year and type (left) and clearcut percentage trend (right) — 2024 shows 37% clearcut rate</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Technical Implementation</h2>
+
+            <h3>Data Acquisition</h3>
+            <p>Sentinel-2 Level-2A imagery (10m resolution) was exported from Google Earth Engine for the study region (145.5–146.5°E, -43.2 to -42.2°S). Annual composites (2019–2024) were generated using cloud-masked median values from growing season months (October–March).</p>
+
+            <p>Forest loss points were sampled from Hansen Global Forest Change v1.12, filtered to 2019–2024. Land tenure boundaries (PTPZ and reserve estate) were downloaded from Tasmania LIST.</p>
+
+            <div class="tech-box">
+                <h4>Dataset Specifications</h4>
+                <ul>
+                    <li><strong>Imagery:</strong> 12 Sentinel-2 composites (2 per year, ~18GB total)</li>
+                    <li><strong>Patches:</strong> 736 extracted (128×128 pixels, 5 bands: RGB + NIR + SWIR1)</li>
+                    <li><strong>Training labels:</strong> 263 usable (24 clearcut, 239 not-clearcut, 52 ambiguous skipped)</li>
+                    <li><strong>Spatial reference:</strong> EPSG:32755 (UTM Zone 55S)</li>
+                </ul>
+            </div>
+
+            <h3>Model Architecture</h3>
+            <p>A simple 3-layer convolutional neural network was trained to avoid overfitting on the small dataset (263 samples). The architecture uses progressively deeper filters (32→64→128) with max pooling, followed by a dense layer with 50% dropout and sigmoid output for binary classification.</p>
+
+            <div class="highlight-box">
+                <h3>Handling Class Imbalance</h3>
+                <p>The training set had a severe 10:1 imbalance (239 not-clearcut vs 24 clearcut samples). This was addressed using balanced class weighting, which penalises misclassification of the minority class (clearcut) by ~10×during training. This forces the model to learn clearcut features rather than predicting "not-clearcut" for everything.</p>
+            </div>
+
+            <p><strong>Key technical challenge:</strong> Distinguishing geometric clearcut boundaries from irregular fire scars in satellite imagery when both cause complete canopy loss. The model learned to detect rectangular logging patterns versus fire's topography-following boundaries.</p>
+
+            <div class="image-full">
+                <img src="training_history.png" alt="Training history showing loss and accuracy curves">
+                <p class="image-caption">Training and validation curves — no divergence indicates the model is not overfitting despite small dataset</p>
+            </div>
+
+            <h3>Model Performance</h3>
+            <p>Test set performance (n=40, 4 clearcut samples): 100% precision, 100% recall, F1=1.0. However, this high performance is statistically fragile due to the small test set.</p>
+
+            <p><strong>Manual validation provides more robust metrics:</strong> 12 high-confidence clearcut predictions were manually reviewed, achieving 83% precision (10 correct, 2 false positives). The 2 incorrect predictions were fire/natural loss with irregular boundaries that resembled clearcuts.</p>
+
+            <div class="image-full">
+                <img src="clearcut_by_tenure.png" alt="Clearcut predictions by land tenure category">
+                <p class="image-caption">Spatial distribution of clearcuts — 96% in PTPZ (permitted), 4% in reserves (1 flagged violation)</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Spatial Analysis</h2>
+            <p>Predictions were cross-referenced with land tenure boundaries using GeoPandas spatial joins. Each loss point was categorised as inside PTPZ, inside reserves, or outside both categories.</p>
+
+            <p><strong>Finding:</strong> Almost all predicted logging occurs within permitted zones, suggesting compliance with Tasmania's forestry regulations in this study region. The single flagged clearcut in a protected reserve warrants ground-truthing to confirm whether it represents a genuine violation or a model false positive.</p>
+
+            <p><strong>Interactive exploration:</strong> The <a href="map.html" style="color: #B794D9;">web map</a> allows users to toggle layer controls, click markers for prediction details, and filter by land tenure category.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Limitations and Future Work</h2>
+            
+            <h3>Current Limitations</h3>
+            <ul>
+                <li><strong>Geographic scope:</strong> Study region limited to central Tasmania (145.5–146.5°E). Findings may not generalise to western or northern regions.</li>
+                <li><strong>Small training set:</strong> 263 labelled patches is small for deep learning. Additional labelled data would improve model robustness.</li>
+                <li><strong>Binary classification:</strong> Does not distinguish clearcut types (salvage logging, plantation harvest, native forest clearfelling).</li>
+                <li><strong>Fire/clearcut ambiguity:</strong> Model occasionally confuses fire boundaries with clearcut edges (2 false positives in 12-sample validation).</li>
+            </ul>
+
+            <h3>Potential Extensions</h3>
+            <ul>
+                <li><strong>Expand study region:</strong> Apply model to all 4,051 Hansen loss points across Tasmania.</li>
+                <li><strong>Multi-class classification:</strong> Distinguish clearcut subtypes and other loss drivers (disease, windthrow).</li>
+                <li><strong>Temporal tracking:</strong> Monitor individual sites across multiple years to detect regeneration or repeat clearing.</li>
+                <li><strong>Ground-truthing:</strong> Field validation of flagged clearcuts in protected areas.</li>
+                <li><strong>Real-time monitoring:</strong> Automate monthly inference on new Sentinel-2 imagery.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Tools and Technologies</h2>
+            
+            <div class="tech-box">
+                <h4>Data Sources</h4>
+                <ul>
+                    <li>Sentinel-2 Level-2A (ESA Copernicus, via Google Earth Engine)</li>
+                    <li>Hansen Global Forest Change v1.12 (University of Maryland)</li>
+                    <li>Tasmania LIST (PTPZ, Reserve Estate boundaries)</li>
+                </ul>
+            </div>
+
+            <div class="tech-box">
+                <h4>Technical Stack</h4>
+                <ul>
+                    <li><strong>Python 3.13</strong> — primary language</li>
+                    <li><strong>TensorFlow/Keras</strong> — CNN training and inference</li>
+                    <li><strong>GeoPandas</strong> — spatial joins, CRS transformations, geometry operations</li>
+                    <li><strong>Rasterio</strong> — GeoTIFF I/O and patch extraction</li>
+                    <li><strong>Folium</strong> — interactive web mapping</li>
+                    <li><strong>scikit-learn</strong> — train/test splitting, class weights, evaluation metrics</li>
+                    <li><strong>Google Earth Engine</strong> — Sentinel-2 composite generation and export</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Project Resources</h2>
+            <div class="hero-actions" style="justify-content: flex-start;">
+                <a href="map.html" class="btn btn-primary">Interactive Map</a>
+                <a href="explainer.html" class="btn btn-secondary">Stakeholder Summary</a>
+                <a href="https://github.com/dtcrompton/tasmania-deforestation-detection" class="btn btn-secondary" target="_blank">GitHub Repository</a>
+            </div>
+        </section>
+    </div>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and remote sensing</p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="map.html">Interactive Map</a> · 
+                <a href="explainer.html">Stakeholder Summary</a> · 
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholder Explainer | Tasmania Deforestation Detection</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Document container */
+        .document {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: #1a1a1a;
+            padding: 60px;
+            text-align: left;
+        }
+
+        /* Document header */
+        .doc-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(183, 148, 217, 0.3);
+        }
+
+        .doc-header h1 {
+            font-size: 2.2em;
+            color: #B794D9;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .doc-header .subtitle {
+            font-size: 1.2em;
+            color: #7FAD87;
+            font-weight: 500;
+        }
+
+        .doc-header .meta {
+            font-size: 0.95em;
+            color: #808080;
+            margin-top: 15px;
+        }
+
+        /* Stats — 2 column for explainer */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(127, 173, 135, 0.3);
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: #333;
+                text-align: left;
+            }
+
+            .document {
+                max-width: 100%;
+                margin: 0;
+                padding: 40px;
+                background: white;
+                box-shadow: none;
+                border: none;
+            }
+
+            nav, #contact, footer, .no-print {
+                display: none;
+            }
+
+            h1, h2, h3 { color: #333; }
+            p, li { color: #333; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .document { margin: 30px 20px; padding: 40px 30px; }
+            .stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="project-page">
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="index.html">← Project Details</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="document">
+        <div class="doc-header">
+            <h1>Tasmania Deforestation Detection</h1>
+            <p class="subtitle">Machine Learning for Forest Loss Monitoring</p>
+            <p class="meta">Stakeholder Explainer | Daniel Crompton | April 2026</p>
+        </div>
+
+        <h2>What This Analysis Does</h2>
+        <p>This project uses satellite imagery and machine learning to classify forest loss events in central Tasmania, distinguishing clearcut logging from fire-driven loss. The goal is to identify spatial patterns and detect potential illegal clearing in protected areas.</p>
+        
+        <p>A convolutional neural network was trained on 263 manually-labelled Sentinel-2 satellite images (2019–2024) to recognise the visual difference between geometric clearcut boundaries and irregular fire scars. Predictions were then cross-referenced with land tenure data to flag clearcuts occurring outside permitted logging zones.</p>
+
+        <div class="key-point">
+            <p><strong>Key Question:</strong> Is unauthorised clearcut logging occurring in Tasmania's protected forests?</p>
+            <p><strong>Answer:</strong> In central Tasmania, fire — not logging — is the dominant driver of forest loss. Only 3.5% of detected loss was clearcut logging, and 96% of those clearcuts occurred in permitted zones.</p>
+        </div>
+
+        <h2>Findings</h2>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">3.5%</div>
+                <div class="stat-label">Forest loss attributed to clearcut logging (26 of 736 sites)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">96%</div>
+                <div class="stat-label">Clearcuts occurred in permitted logging zones (PTPZ)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">37%</div>
+                <div class="stat-label">2024 clearcut rate — sharp increase from <2% in fire-heavy years</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Clearcut flagged in protected reserves (outside permitted zones)</div>
+            </div>
+        </div>
+
+        <h3>Fire Dominates Forest Loss</h3>
+        <p>The overwhelming majority of forest loss in central Tasmania (2019–2024) was fire-driven, particularly from the 2019 and 2023 bushfire seasons. Only 26 of 736 analysed sites showed clearcut logging patterns.</p>
+
+        <p><strong>Implication:</strong> Fire management — not logging enforcement — should be the priority for forest protection in this region.</p>
+
+        <h3>2024 Shows a Concerning Spike</h3>
+        <p>While overall clearcut rates are low, 2024 shows a sharp increase: 37% of forest loss in that year was clearcut logging, compared to less than 2% in fire-heavy years (2019, 2023). This suggests recent logging activity has intensified.</p>
+
+        <h3>Spatial Compliance</h3>
+        <p>25 of 26 predicted clearcuts fell within PTPZ (Private Timber Reserve Zones) where logging is permitted under Tasmanian law. One clearcut was detected in a protected reserve and flagged for ground-truthing to confirm whether it represents a genuine violation or a model error.</p>
+
+        <h2>How the Model Works</h2>
+        <p>The classification system uses a convolutional neural network (CNN) — a type of machine learning model designed to recognise patterns in images. The model was trained on satellite imagery with five spectral bands (visible light + near-infrared + short-wave infrared) to distinguish clearcut logging from other forest loss types.</p>
+        
+        <div class="key-point">
+            <p><strong>What the model learned:</strong> Clearcuts have geometric boundaries (rectangular logging coupes), while fire scars follow terrain contours with irregular edges. The model detects these shape differences in satellite imagery.</p>
+        </div>
+
+        <p><strong>Training data:</strong> 263 forest loss sites were manually labelled by inspecting Sentinel-2 imagery. Only 24 were clearcuts (10:1 class imbalance), which required special handling during training to prevent the model from simply predicting "not clearcut" for everything.</p>
+        
+        <p><strong>Validation:</strong> Manual review of 12 high-confidence clearcut predictions achieved 83% precision (10 correct, 2 false positives where fire was misclassified as clearcut).</p>
+
+        <h2>How This Can Be Used</h2>
+        
+        <h3>For Conservation Organisations</h3>
+        <ul>
+            <li><strong>Monitor protected areas:</strong> The interactive map flags clearcuts in reserves for ground-truthing and potential enforcement action</li>
+            <li><strong>Track temporal trends:</strong> Annual monitoring can detect changes in logging activity (like the 2024 spike)</li>
+            <li><strong>Inform advocacy:</strong> Data-driven evidence of forest loss patterns supports policy discussions</li>
+        </ul>
+
+        <h3>For Government Agencies</h3>
+        <ul>
+            <li><strong>Compliance verification:</strong> Cross-reference predictions with forestry permits to identify undocumented clearing</li>
+            <li><strong>Resource allocation:</strong> Focus inspection efforts on flagged sites rather than blanket monitoring</li>
+            <li><strong>Fire management planning:</strong> Understanding that fire drives most forest loss informs resource priorities</li>
+        </ul>
+
+        <h3>For Researchers</h3>
+        <ul>
+            <li><strong>Baseline dataset:</strong> 736 classified forest loss sites provide ground truth for further studies</li>
+            <li><strong>Method replication:</strong> The CNN approach can be adapted to other regions or extended to multi-class classification</li>
+            <li><strong>Temporal analysis:</strong> Tracking individual sites across multiple years reveals regeneration patterns</li>
+        </ul>
+
+        <h2>Important Limitations</h2>
+        
+        <div class="key-point">
+            <p><strong>This analysis covers central Tasmania only</strong> (145.5–146.5°E, -43.2 to -42.2°S), representing ~18% of Tasmania's total forest area. Findings may not generalise to western or northern regions with different forest types and fire regimes.</p>
+        </div>
+
+        <p><strong>Small training dataset:</strong> Only 263 labelled samples were available, with just 24 clearcut examples. Additional labelled data would improve model robustness and allow detection of rarer clearing types.</p>
+
+        <p><strong>Binary classification:</strong> The model distinguishes "clearcut" from "not clearcut" but does not differentiate clearcut types (salvage logging, plantation harvest, native forest clearfelling) or other loss drivers (disease, windthrow).</p>
+
+        <p><strong>Fire/clearcut ambiguity:</strong> In 2 of 12 validation cases, fire boundaries were misclassified as clearcuts. Ground-truthing is essential before enforcement action.</p>
+
+        <p><strong>Annual temporal resolution:</strong> Imagery is annual composites (one per year), so intra-annual dynamics are missed. Some clearcuts may occur between composite dates.</p>
+
+        <h2>Next Steps</h2>
+        <p>To extend this work into operational forest monitoring, the following would be valuable:</p>
+        <ul>
+            <li><strong>Expand geographic scope:</strong> Apply the model to all 4,051 Hansen loss points across Tasmania</li>
+            <li><strong>Ground-truth flagged violations:</strong> Field verification of the reserve clearcut to confirm model accuracy</li>
+            <li><strong>Multi-class extension:</strong> Train the model to distinguish clearcut subtypes and other loss drivers</li>
+            <li><strong>Temporal tracking:</strong> Monitor sites across multiple years to detect regeneration or repeat clearing</li>
+            <li><strong>Real-time monitoring:</strong> Automate monthly inference on new Sentinel-2 imagery for early detection</li>
+        </ul>
+
+        <h2>Access the Data</h2>
+        <p>The full dataset, interactive map, and analysis code are publicly available:</p>
+        <ul>
+            <li><strong>Interactive map:</strong> <a href="map.html" style="color: #B794D9;">Explore predictions with land tenure overlays</a></li>
+            <li><strong>GitHub repository:</strong> <a href="https://github.com/dtcrompton/tasmania-deforestation-detection" target="_blank" style="color: #B794D9;">Full code, data, and methodology</a></li>
+            <li><strong>Technical write-up:</strong> <a href="index.html" style="color: #B794D9;">Detailed project documentation</a></li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0 80px;">
+        <a href="javascript:window.print()" class="btn btn-primary no-print">Print / Save as PDF</a>
+    </div>
+    
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and remote sensing</p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Project Details</a> · 
+                <a href="map.html">Interactive Map</a> · 
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+</body>
+</html>

@@ -378,6 +378,16 @@
         #projects-extra {
             justify-content: center;
         }
+
+        #projects-extra {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease-in-out;
+        }
+
+        #projects-extra.expanded {
+            max-height: 3000px;
+        }
     </style>
 </head>
 <body>
@@ -426,6 +436,36 @@
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
+
+            <!-- Tasmania Deforestation Detection -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/tasmania-deforestation/predictions_by_year.png" alt="Tasmania Deforestation Detection">
+                    <span class="project-status">Completed</span>
+                </div>
+                <div class="project-content">
+                    <h3>Tasmania Deforestation Detection</h3>
+                    <p>A CNN (TensorFlow/Keras) to clasify Sentinel-2 satellite imagery into clearcut vs fire-driven forest loss. Trained on 263 manually-labelled patches, handled 10:1 class imbalance via class weighting. Spatial analysis (GeoPandas) cross-referenced predictions with PTPZ boundaries to flag potential violations.</p>
+
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> only 3.5% of forest loss was clearcut logging, with 96% occurring in permitted zones.
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">GeoPandas</span>
+                        <span class="tag">Google Earth Engine</span>
+                        <span class="tag">Sentinel-2</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="projects/tasmania-deforestation/index.html" class="btn btn-primary">View Project</a>
+                        <a href="projects/tasmania-deforestation/map.html" class="btn btn-primary">Interactive Map</a>
+                        <a href="https://github.com/dtcrompton/tasmania-deforestation-detection" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- 1. Leeds Fungi Project -->
             <div class="project-card">
@@ -516,6 +556,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="projects-grid projects-hidden" id="projects-extra" style="margin-top: 40px;">
 
             <!-- 4. CO2 Emissions Project -->
             <div class="project-card">
@@ -544,9 +587,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="projects-grid projects-hidden" id="projects-extra" style="display:none; margin-top: 40px;">
 
             <!-- 5. AI Ethics Dissertation -->
             <div class="project-card">
@@ -583,13 +623,13 @@
             <a class="btn btn-primary" id="view-all-btn" onclick="
                 var extra = document.getElementById('projects-extra');
                 var btn = document.getElementById('view-all-btn');
-                if (extra.style.display === 'none') {
-                    extra.style.display = 'grid';
-                    btn.textContent = 'View All Projects ↑';
-                } else {
-                    extra.style.display = 'none';
+                if (extra.classList.contains('expanded')) {
+                    extra.classList.remove('expanded');
                     btn.textContent = 'View All Projects';
                     document.getElementById('projects').scrollIntoView({behavior: 'smooth'});
+                } else {
+                    extra.classList.add('expanded');
+                    btn.textContent = 'View Less';
                 }
             " style="cursor: pointer; padding: 14px 32px; font-size: 1em;">View All Projects</a>
         </div>
