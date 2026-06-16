@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholder Explainer | Grey-headed Albatross Foraging Ecology</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Document container */
+        .document {
+            max-width: 900px;
+            margin: 60px auto 0;
+            background: #1a1a1a;
+            padding: 60px;
+            text-align: left;
+        }
+
+        /* Document header */
+        .doc-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(183, 148, 217, 0.3);
+        }
+
+        .doc-header h1 {
+            font-size: 2.2em;
+            color: #B794D9;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .doc-header .subtitle {
+            font-size: 1.2em;
+            color: #7FAD87;
+            font-weight: 500;
+        }
+
+        .doc-header .meta {
+            font-size: 0.95em;
+            color: #808080;
+            margin-top: 15px;
+        }
+
+        /* Stats — 2 column for explainer */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(127, 173, 135, 0.3);
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: #333;
+                text-align: left;
+            }
+
+            .document {
+                max-width: 100%;
+                margin: 0;
+                padding: 40px;
+                background: white;
+                box-shadow: none;
+                border: none;
+            }
+
+            nav, #contact, footer, .no-print {
+                display: none;
+            }
+
+            h1, h2, h3 { color: #333; }
+            p, li { color: #333; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .document { margin: 30px 20px; padding: 40px 30px; }
+            .stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="project-page">
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="index.html">← Project Details</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="document">
+        <div class="doc-header">
+            <h1>Grey-headed Albatross Foraging Ecology</h1>
+            <p class="subtitle">Movement tracking and bycatch risk in the Southern Ocean</p>
+            <p class="meta">Stakeholder Explainer | Daniel Crompton | June 2026</p>
+        </div>
+
+        <h2>What This Analysis Does</h2>
+        <p>This project analyses GPS tracking data from 24 grey-headed albatrosses at Campbell Island, New Zealand, to understand how and where they feed — and where they face the greatest risk from longline fishing operations.</p>
+
+        <p>Using a technique called a Hidden Markov Model, the analysis classifies what each bird is doing at every GPS fix across a full year: resting on the ocean surface, actively searching for food, or travelling between areas. This behavioural classification is then linked to satellite ocean data (sea surface temperature, chlorophyll concentrations) and international fisheries records to map bycatch risk at both population and individual level.</p>
+
+        <div class="key-point">
+            <p><strong>Key Question:</strong> Where do grey-headed albatrosses forage, and where are they most exposed to longline fishing gear?</p>
+            <p><strong>Headline Finding:</strong> 99.1% of foraging occurs in New Zealand's Exclusive Economic Zone and adjacent subantarctic waters — not in the CCAMLR-regulated Southern Ocean. Addressing bycatch risk for this population is primarily a matter for New Zealand fisheries management, not international Antarctic agreements.</p>
+        </div>
+
+        <h2>Findings</h2>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">99.1%</div>
+                <div class="stat-label">Foraging in NZ EEZ and subantarctic waters, outside CCAMLR jurisdiction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3.5×</div>
+                <div class="stat-label">Range in maximum foraging distance — some birds range 745 km from the colony, others 2,715 km</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">41.1%</div>
+                <div class="stat-label">Time spent in active foraging (area-restricted search) across the tracked population</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3 birds</div>
+                <div class="stat-label">Identified as high-risk individuals (birds 2, 89518, 90493) — ranging over 2,300 km and covering 10,000–12,000 km per trip</div>
+            </div>
+        </div>
+
+        <h3>Individual Birds Behave Very Differently</h3>
+        <p>The most striking finding is the degree of variation between individuals from the same colony, in the same year. Some birds spend 59% of their time actively foraging; others just 33%. Some range 2,700 km from Campbell Island; others rarely exceed 750 km. This is not random variation — published research on seabirds suggests individual foraging strategies are stable across years, meaning these differences reflect genuine specialisation.</p>
+
+        <p><strong>Conservation implication:</strong> Risk is not evenly distributed across the population. Three birds appear to be chronically exposed to fishing areas by virtue of their long-range foraging strategy — not because they happened to be unlucky in 2013.</p>
+
+        <h3>Where Birds Forage Matters More Than What the Ocean Looks Like</h3>
+        <p>A statistical model found that where a bird is located (distance from colony, latitude, longitude) is a better predictor of foraging behaviour than local ocean conditions (temperature, productivity). This suggests these birds rely partly on learned knowledge of where food tends to be found, rather than purely following environmental gradients in real time.</p>
+
+        <p><strong>Climate implication:</strong> If productive ocean zones shift under climate change, birds with strong spatial fidelity may not track those shifts — continuing to return to historically productive areas even if conditions have deteriorated.</p>
+
+        <h3>The Fishing Overlap Picture</h3>
+        <p>CCAMLR (the international body managing Southern Ocean fisheries) records show 58 million longline hooks were set in the convention area in 2013. However, because 99.1% of foraging by these Campbell Island birds occurs north of the CCAMLR boundary — in New Zealand's EEZ — that data tells only part of the story. A complete risk assessment would require access to New Zealand domestic fisheries observer records, which are managed separately by the Ministry for Primary Industries.</p>
+
+        <p>The temporal picture shows moderate synchrony (index 0.31) between bird foraging peaks (October–November) and CCAMLR longline effort (January peak, with secondary activity in May and December). The December risk window — when both fishing effort and late-season bird activity coincide — is the most directly actionable finding from the available data.</p>
+
+        <h2>How This Can Be Used</h2>
+
+        <h3>For Conservation and Wildlife Management Agencies</h3>
+        <ul>
+            <li><strong>Identify highest-risk individuals:</strong> Birds 2, 89518, and 90493 are flagged as high-risk. Multi-year tracking could confirm whether these are consistently the most exposed birds, enabling targeted monitoring</li>
+            <li><strong>Jurisdiction mapping:</strong> The 97.5% NZ EEZ finding clarifies where advocacy and regulatory engagement should be directed — New Zealand's fisheries framework, not CCAMLR</li>
+            <li><strong>Temporal targeting:</strong> December is the highest-risk month within the available CCAMLR data. Mitigation requirements (bird-scaring lines, night-only setting, weighted branch lines) could be prioritised for vessels operating in subantarctic waters during this window</li>
+        </ul>
+
+        <h3>For Fisheries Management Authorities</h3>
+        <ul>
+            <li><strong>Spatial risk layers:</strong> The foraging hotspot density map (KDE output) provides a spatial layer for overlay with fishing effort data — identifying specific areas where mitigation requirements would be highest-impact</li>
+            <li><strong>Observer data integration:</strong> The analysis framework is designed to incorporate NZ domestic fishing effort data if made available — generating a quantitative risk surface (bird density × hook density × temporal overlap)</li>
+            <li><strong>Compliance targeting:</strong> High-risk overlap areas identified in this analysis provide spatial evidence to support targeted observer placement or inspection scheduling</li>
+        </ul>
+
+        <h3>For Researchers</h3>
+        <ul>
+            <li><strong>Baseline behavioural dataset:</strong> Per-bird HMM classifications and foraging profiles across 93,474 GPS fixes provide a foundation for comparative behavioural studies</li>
+            <li><strong>Spatial fidelity hypothesis:</strong> The dominance of spatial over environmental predictors of foraging is an empirically testable claim that multi-year tracking data could confirm or refute</li>
+            <li><strong>Replicable pipeline:</strong> All analysis code is publicly available and designed to be adaptable to other seabird tracking datasets using the same movement ecology methods</li>
+        </ul>
+
+        <h2>Important Limitations</h2>
+
+        <div class="key-point">
+            <p><strong>Single year of data (2013):</strong> All findings are from one tracking season. The identification of high-risk individual birds, and the claim that their strategies are consistent across years, relies on published literature rather than multi-year data from this population.</p>
+        </div>
+
+        <p><strong>NZ EEZ fishing data gap:</strong> The most consequential limitation for conservation application. Longline fishing effort within the birds' primary foraging zone is regulated nationally by New Zealand and was not available for this analysis. The risk surface presented here uses CCAMLR Southern Ocean records, which cover only 0.9% of the birds' foraging area.</p>
+
+        <p><strong>Environmental resolution:</strong> Satellite sea temperature and chlorophyll data are monthly averages at 10 km resolution. Fine-scale features — upwelling filaments, mesoscale eddies, tidal fronts — that may drive moment-to-moment foraging decisions are not captured at this resolution.</p>
+
+        <p><strong>CCAMLR spatial approximation:</strong> Fishing effort data in the CCAMLR bulletin contains area codes but no spatial coordinates. Effort is visualised using approximate area centroids rather than precise fishing ground locations.</p>
+
+        <p><strong>Ground-truthing:</strong> Behavioural state classification (resting, foraging, transiting) is based on movement patterns, not direct observation. While the HMM results are internally consistent and ecologically plausible, they have not been validated against direct behavioural observation data for this specific population.</p>
+
+        <h2>Next Steps</h2>
+        <p>To move from exploratory analysis to operational conservation application, the following would be most valuable:</p>
+        <ul>
+            <li><strong>Obtain NZ domestic fisheries observer data</strong> for FAO Area 81 / SPRFMO Convention Area to generate a complete spatial risk surface for the birds' actual foraging zone</li>
+            <li><strong>Multi-year tracking</strong> to confirm whether the high-risk individual cluster is stable across breeding seasons</li>
+            <li><strong>Sex-disaggregated analysis</strong> — grey-headed albatrosses show sexual segregation in foraging habitat; sex information would test whether risk exposure is sex-biased</li>
+            <li><strong>Engage NZ MPI and ACAP</strong> to discuss whether the spatial outputs are useful for existing mitigation programmes or observer allocation decisions</li>
+        </ul>
+
+        <h2>Access the Analysis</h2>
+        <p>The full dataset, interactive map, and analysis code are publicly available:</p>
+        <ul>
+            <li><strong>Interactive map:</strong> <a href="map.html" style="color: #B794D9;">Explore individual bird tracks and foraging hotspots</a></li>
+            <li><strong>GitHub repository:</strong> <a href="https://github.com/dtcrompton/albatross-foraging-ecology" target="_blank" style="color: #B794D9;">Full code, data, and methodology</a></li>
+            <li><strong>Technical write-up:</strong> <a href="index.html" style="color: #B794D9;">Detailed project documentation</a></li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0 80px;">
+        <a href="javascript:window.print()" class="btn btn-primary no-print">Print / Save as PDF</a>
+    </div>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and conservation science</p>
+
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Project Details</a> ·
+                <a href="map.html">Interactive Map</a> ·
+                <a href="https://dtcrompton.github.io/index.html">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+</body>
+</html>

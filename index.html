@@ -437,6 +437,35 @@
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
 
+            <!-- New Zealand Albatross Tracking -->
+             <div class="project-card">
+                <div class="project-image">
+                    <img src="projects/albatross-foraging-ecology/albatross_map_thumbnail.png"
+                        alt="Grey-headed albatross interactive foraging map">
+                </div>
+                <div class="project-content">
+                    <h3>Grey-headed Albatross Foraging Ecology</h3>
+                    <p>GPS movement analysis, behavioural classification (Hidden Markov Model), and bycatch risk modelling for 24 albatrosses across the Southern Ocean.</p>
+
+                    <div class="key-outcome">
+                        <strong>Key Outcome:</strong> 99.1% of foraging occurs in New Zealand's EEZ — not CCAMLR-regulated Antarctic waters.
+                    </div>
+
+                    <div class="project-tags">
+                        <span class="tag">Movement Ecology</span>
+                        <span class="tag">HMM</span>
+                        <span class="tag">Conservation</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Folium</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/albatross-foraging-ecology/index.html" class="btn btn-primary">Project Details</a>
+                        <a href="projects/albatross-foraging-ecology/map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+                        <a href="https://github.com/dtcrompton/albatross-foraging-ecology" class="btn btn-secondary" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tasmania Deforestation Detection -->
             <div class="project-card">
                 <div class="project-image">
@@ -467,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- 1. Leeds Fungi Project -->
+            <!-- Leeds Fungi Project -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="projects/fungi/preview.png" alt="Leeds Fungal Biodiversity Analysis">
@@ -498,7 +527,7 @@
                 </div>
             </div>
             
-            <!-- 2. Greater Manchester Brownfield Project -->
+            <!-- Greater Manchester Brownfield Project -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="projects/brownfield/preview.png" alt="Greater Manchester Brownfield Risk Map">
@@ -528,8 +557,12 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- 3. Forest Cover Project -->
+        <!-- Hidden projects section -->    
+        <div class="projects-grid projects-hidden" id="projects-extra" style="margin-top: 40px;">
+
+            <!-- Forest Cover Project -->
             <div class="project-card">
                 <div class="project-image">
                     <img src="projects/forest/preview.png" alt="UK National Parks Forest Change">
@@ -556,9 +589,7 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="projects-grid projects-hidden" id="projects-extra" style="margin-top: 40px;">
 
             <!-- 4. CO2 Emissions Project -->
             <div class="project-card">
@@ -588,7 +619,7 @@
                 </div>
             </div>
 
-            <!-- 5. AI Ethics Dissertation -->
+            <!-- AI Ethics Dissertation -->
             <div class="project-card">
                 <div class="project-image">
                     <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #3a2a4a 0%, #5a4a6a 50%, #3a2a4a 100%); display: flex; align-items: center; justify-content: center;">
@@ -619,6 +650,7 @@
                 </div>
             </div>
         </div>
+        
         <div style="display: flex; justify-content: center; margin-top: 50px; padding-bottom: 20px;">
             <a class="btn btn-primary" id="view-all-btn" onclick="
                 var extra = document.getElementById('projects-extra');

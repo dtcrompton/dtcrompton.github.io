@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grey-headed Albatross Foraging Ecology | Daniel Crompton</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 100px 40px 80px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 148, 217, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B794D9, #7FAD87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Content container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        /* Stats grid — 4 column for project write-up */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 148, 217, 0.2);
+            text-align: center;
+        }
+
+        /* Methodology numbered steps */
+        .methodology-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .methodology-steps > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 35px;
+        }
+
+        .methodology-steps > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #B794D9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .methodology-steps ul {
+            list-style: disc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .container { padding: 60px 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .methodology-steps > li { padding-left: 50px; }
+            .methodology-steps > li::before { width: 35px; height: 35px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body class="project-page">
+    <nav class="project-nav">
+        <div class="nav-left">
+            <a href="../../index.html">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Grey-headed Albatross Foraging Ecology</h1>
+        <p class="tagline">Movement ecology, behavioural classification, and bycatch risk modelling from GPS tracking data across the Southern Ocean</p>
+        <div class="hero-actions">
+            <a href="map.html" class="btn btn-primary" target="_blank">Interactive Map</a>
+            <a href="explainer.html" class="btn btn-secondary">Stakeholder Explainer</a>
+            <a href="https://github.com/dtcrompton/albatross-foraging-ecology" class="btn btn-secondary" target="_blank">View Code</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Problem Statement -->
+        <div class="section">
+            <h2>The Challenge</h2>
+            <p>Grey-headed albatrosses are one of the world's most threatened seabird groups, with populations in long-term decline. Campbell Island, in New Zealand's subantarctic, hosts one of the largest breeding colonies — and is the source of the GPS tracking dataset underpinning this project.</p>
+
+            <p>Satellite tracking data can tell us where these birds go. But to understand what drives their decisions — why some birds range 750 km from the colony while others fly 2,700 km; why some areas attract dense foraging activity while others are traversed quickly — requires classifying behaviour from raw movement signals and linking it to the oceanographic environment those birds encounter.</p>
+
+            <p>The conservation question follows from the science: <strong>where and when do albatrosses overlap with longline fishing operations, and which individual birds bear the greatest risk?</strong> Longline fisheries, which set lines carrying thousands of baited hooks, are the primary source of albatross bycatch. A bird in active foraging mode — flying slowly, circling, responsive to any food signal — is far more likely to be attracted to a vessel's bait than one in directed transit.</p>
+
+            <p>This project analyses GPS tracking data from 24 grey-headed albatrosses across a complete breeding year (2013), using a four-phase pipeline: movement metric extraction, Hidden Markov Model behavioural classification, oceanographic driver modelling, and conservation risk analysis. The result is a data-driven picture of where, when, and how these birds forage — and which management authority is responsible for the waters where most of that foraging occurs.</p>
+        </div>
+
+        <!-- Key Findings -->
+        <div class="section">
+            <h2>Key Findings</h2>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">99.1%</div>
+                    <div class="stat-label">Foraging in NZ EEZ and subantarctic waters, outside CCAMLR jurisdiction</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3.5×</div>
+                    <div class="stat-label">Range in maximum foraging distance across 24 birds from the same colony (745–2,715 km)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">41.1%</div>
+                    <div class="stat-label">GPS fixes classified as active area-restricted search (foraging), with 62.2° mean turning angle</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">0.31</div>
+                    <div class="stat-label">Temporal synchrony index between peak bird foraging activity and CCAMLR longline effort (2013)</div>
+                </div>
+            </div>
+
+            <h3>Individual Variation Is the Dominant Signal</h3>
+            <p>The most striking result is not population-level — it is the degree of variation between individuals. Birds from the same colony, tracked in the same year, show a 3.5-fold difference in maximum foraging range (745 km to 2,715 km) and a near-doubling in the proportion of time spent actively foraging (33% to 59%). Total distance covered ranges from 3,465 km to 12,285 km per bird.</p>
+
+            <p>This points to genuine individual specialisation in foraging strategy — not noise. Published literature on seabird niche conservatism suggests individual strategies are consistent across years, meaning that the three birds identified as high-risk (birds 2, 89518, 90493) are likely chronically exposed to fishing gear, not incidentally.</p>
+
+            <h3>Spatial Fidelity Outweighs Environmental Tracking</h3>
+            <p>A Random Forest classifier trained on five predictors (SST, chlorophyll-a, latitude, longitude, and distance from colony) predicts foraging behaviour with 64.9% test accuracy. Feature importance analysis reveals that spatial features dominate: distance from colony alone accounts for 31% of predictive power, with latitude (24%) and longitude (19%) adding further spatial signal. SST (15%) and chlorophyll (11%) contribute meaningfully but rank below position-based features.</p>
+
+            <p>This suggests these birds use learned spatial knowledge of productive zones rather than real-time environmental tracking — they return to known areas rather than dynamically following oceanographic gradients. If climate change shifts productive zones away from historically used areas, birds with strong spatial fidelity may not follow.</p>
+
+            <h3>The CCAMLR Jurisdiction Finding</h3>
+            <p>Only 0.9% of foraging GPS fixes fall south of 60°S, within the CCAMLR Convention Area. The overwhelming majority (97.5%) occurs in New Zealand's Exclusive Economic Zone and adjacent subantarctic waters. A complete bycatch risk assessment for this population requires New Zealand Ministry for Primary Industries fisheries data — not the Southern Ocean fishing records managed under CCAMLR.</p>
+        </div>
+
+        <!-- Methodology -->
+        <div class="section">
+            <h2>Methodology</h2>
+
+            <ol class="methodology-steps">
+                <li>
+                    <h3>Movement Metric Extraction (Phase 1)</h3>
+                    <p>GPS tracking data (93,474 fixes across 24 birds) loaded from the Torres et al. 2017 Movebank dataset. For each GPS fix, the following metrics were calculated:</p>
+                    <ul>
+                        <li><strong>Step length</strong> — great-circle distance from the previous fix using the haversine formula, accounting for Earth's curvature</li>
+                        <li><strong>Speed (km/h)</strong> — step length divided by elapsed time between fixes</li>
+                        <li><strong>Bearing</strong> — compass direction from previous fix to current, and from current to next</li>
+                        <li><strong>Turning angle</strong> — signed angular difference between incoming and outgoing bearings, normalised to [−π, π]</li>
+                        <li><strong>Distance from Campbell Island</strong> — haversine distance to the breeding colony at each fix</li>
+                    </ul>
+                    <p>Tracks were segmented into foraging trips using a 50 km colony threshold. Most birds made a single extended post-breeding foraging trip (mean 25 days, longest 274 days), consistent with grey-headed albatross inter-breeding behaviour.</p>
+                </li>
+
+                <li>
+                    <h3>Behavioural State Classification — HMM (Phase 2a)</h3>
+                    <p>A 3-state Gaussian Hidden Markov Model was fitted to log-transformed step length and absolute turning angle across all 24 birds simultaneously using <code>hmmlearn</code>. The model identifies the most likely hidden state at each GPS fix without any pre-labelled training data — the patterns emerge purely from the movement signal.</p>
+
+                    <div class="code-block">
+<pre><code># Fit HMM to log step length + absolute turning angle
+model = hmm.GaussianHMM(
+    n_components=3,        # resting / foraging / transiting
+    covariance_type='full',
+    n_iter=200,
+    random_state=42
+)
+model.fit(features, lengths)  # lengths = GPS points per bird</code></pre>
+                    </div>
+
+                    <p>States were labelled by ranking on mean step length. The separation is ecologically meaningful: resting (0.14 km, 6.9° turning), foraging area-restricted search (1.44 km, 62.2° turning), and transiting (4.04 km, 9.9° turning). The foraging signal is particularly clean — a 62.2° mean turning angle against 9.9° for transit represents tight circling behaviour over prey patches, consistent with documented albatross foraging dynamics.</p>
+
+                    <div class="image-container">
+                        <img src="phase2a_behaviour.png" alt="Phase 2a behavioural classification results">
+                    </div>
+                    <p class="image-caption">HMM results: spatial distribution of states, time-series for the most-tracked bird, step length distributions, and per-bird time budget. Foraging (green) concentrates around Campbell Island; transiting (mauve) extends across the Southern Ocean.</p>
+                </li>
+
+                <li>
+                    <h3>Environmental Driver Analysis (Phase 2b)</h3>
+                    <p>Monthly sea surface temperature (NASA JPL MUR SST) and chlorophyll-a (ESA CCI Ocean Colour) downloaded via NOAA CoastWatch ERDDAP and matched to each GPS fix using nearest-neighbour lookup in space and time. A Random Forest classifier was then trained on five features to test whether oceanographic conditions predict foraging behaviour.</p>
+
+                    <div class="image-container">
+                        <img src="phase2b_drivers.png" alt="Environmental driver analysis">
+                    </div>
+                    <p class="image-caption">Feature importance reveals spatial position dominates environmental variables. SST at foraging locations (6.31°C) is marginally cooler than non-foraging locations (6.44°C), consistent with foraging in productive upwelling zones.</p>
+                </li>
+
+                <li>
+                    <h3>Conservation Risk Analysis (Phase 3)</h3>
+                    <p>Foraging hotspots mapped using 2D kernel density estimation on foraging-state GPS points, with longitudes converted to a Campbell Island-centred coordinate system to avoid dateline artefacts. Foraging points classified by management jurisdiction using latitude thresholds (CCAMLR Convention Area boundary at 60°S).</p>
+
+                    <p>CCAMLR longline fishing effort (2013, LLS gear) analysed monthly and compared against bird activity patterns using a temporal synchrony index. Individual birds clustered into three risk groups using k-means on four foraging strategy metrics: maximum distance, proportion foraging, forage centre latitude, and total distance.</p>
+
+                    <div class="image-container">
+                        <img src="phase3_risk_analysis.png" alt="Phase 3 conservation risk analysis">
+                    </div>
+                    <p class="image-caption">Foraging hotspot KDE (top left), management zone breakdown (top right), temporal synchrony with CCAMLR effort (bottom left), and individual risk scatter by cluster (bottom right). Three birds cluster as high-risk based on foraging range and strategy.</p>
+                </li>
+
+                <li>
+                    <h3>Interactive Map (Phase 4)</h3>
+                    <p>Folium web map combining individual bird tracks (togglable, coloured by risk cluster), foraging heatmap, CCAMLR longline effort circles scaled by hook count, and the approximate CCAMLR Convention Area boundary.</p>
+
+                    <p>A key technical challenge: grey-headed albatrosses cross the international dateline, which causes standard Folium polylines to render incorrectly (a straight line drawn across the full map width). Solved by normalising all coordinates to a Campbell Island-centred system — shifting the dateline to −11°W (western Atlantic), far from any albatross data. Leaflet renders coordinates beyond ±180° correctly in adjacent tiles, producing continuous flight path display.</p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Technical Approach -->
+        <div class="section">
+            <h2>Technical Approach</h2>
+
+            <h3>Why HMM for Behavioural Classification?</h3>
+            <p>The HMM is appropriate here because albatross behaviour at any moment depends partly on the previous moment — a bird that was foraging a few minutes ago is more likely to still be foraging than to have switched to transit. The HMM captures this temporal dependency through transition probabilities between states, making it more ecologically realistic than treating each GPS fix as independent.</p>
+
+            <p>The alternative — threshold-based classification using fixed speed or turning angle cutoffs — requires manually chosen thresholds that may not generalise across individuals with different body sizes, wing morphologies, or environmental conditions. The HMM learns these thresholds from the data itself.</p>
+
+            <h3>Random Forest Feature Importance Interpretation</h3>
+            <p>The finding that spatial features (latitude, longitude, distance from colony) outweigh environmental features (SST, chlorophyll) in predicting foraging behaviour has a nuanced interpretation. It does not mean the environment is unimportant — it means that in this dataset, where birds go (spatial fidelity) is a stronger predictor of whether they forage than what environmental conditions they encounter when they get there. These two explanations are not mutually exclusive: birds may return to spatially consistent areas precisely because those areas are reliably productive.</p>
+
+            <h3>KDE Coordinate System Normalisation</h3>
+            <p>Kernel density estimation on longitude data spanning −180° to +180° produces a spurious discontinuity at the dateline. Since the birds' foraging range spans roughly 90°E to 120°W (a ~150° arc centred on Campbell Island at 169°E), the solution is to shift all longitudes into the range [−11°, 349°] — placing Campbell Island at the centre and moving the coordinate break to the western Atlantic where no data exists:</p>
+
+            <div class="code-block">
+<pre><code>CENTER_LON = 169  # Campbell Island longitude
+
+def normalize_lon(lon):
+    # Shift coordinate system so Campbell Island is at centre.
+    # Break point moves to 169 - 180 = -11°W (western Atlantic).
+    return ((lon - CENTER_LON + 180) % 360) + CENTER_LON - 180
+
+forage_lon_360 = foraging_pts['location-long'].apply(normalize_lon)</code></pre>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Data Limitation: CCAMLR Jurisdiction</h3>
+                <p>The CCAMLR Statistical Bulletin Vol. 37 (used for fishing effort) contains no spatial coordinates — only area codes referencing statistical subdivisions. Precise spatial overlap between albatross foraging zones and CCAMLR fishing effort therefore uses approximate area centroids. More importantly, 97.5% of foraging occurs north of the CCAMLR Convention Area boundary, in New Zealand's EEZ. A complete bycatch risk assessment requires NZ Ministry for Primary Industries fisheries data not available for this analysis.</p>
+            </div>
+        </div>
+
+        <!-- Limitations -->
+        <div class="section">
+            <h2>Limitations & Future Work</h2>
+
+            <p><strong>Single breeding year:</strong> Data covers 2013 only. Individual foraging strategies are assumed consistent across years based on published literature on seabird niche conservatism, but multi-year data would be needed to confirm that birds 2, 89518, and 90493 are chronically rather than incidentally high-risk.</p>
+
+            <p><strong>Environmental resolution:</strong> SST and chlorophyll matched at monthly/~0.1° resolution. Fine-scale oceanographic features — fronts, mesoscale eddies, upwelling filaments — that may drive local foraging decisions are not captured. The counterintuitive chlorophyll result (lower mean chlorophyll at foraging locations than non-foraging) is likely an artefact of this spatial smoothing.</p>
+
+            <p><strong>Colony threshold:</strong> The 50 km boundary used to separate colony time from foraging trips is an approximation. All 24 birds came within 7–14 km of Campbell Island at some point, confirming colony visits, but fine-scale breeding phase dynamics are not captured.</p>
+
+            <p><strong>NZ EEZ fishing data:</strong> The most consequential limitation for conservation application. Longline fishing in the birds' primary foraging zone (NZ EEZ, FAO Area 81) is regulated nationally, and effort data was not available for this analysis. SPRFMO (South Pacific Regional Fisheries Management Organisation) datasets would be the appropriate source for a complete risk assessment.</p>
+
+            <h3>Future Extensions</h3>
+            <ul>
+                <li><strong>Multi-year tracking:</strong> Confirm whether high-risk individual foraging strategies are consistent across seasons</li>
+                <li><strong>NZ MPI fishing effort:</strong> Obtain NZ domestic fisheries observer data to quantify spatial overlap in the birds' actual foraging zone</li>
+                <li><strong>Sex-disaggregated analysis:</strong> Grey-headed albatrosses show sexual segregation in foraging habitat; sex data would test whether the high-risk cluster corresponds to one sex</li>
+                <li><strong>Fine-scale oceanographic matching:</strong> Use daily/4km SST and chlorophyll products (rather than monthly/10km) to better capture ephemeral productive features</li>
+                <li><strong>Habitat suitability modelling:</strong> MaxEnt or BRT models to generate predictive maps of foraging probability across the full Southern Ocean</li>
+            </ul>
+        </div>
+
+        <!-- Tools & Skills -->
+        <div class="section">
+            <h2>Tools & Technologies</h2>
+            <p><strong>Languages:</strong> Python 3.13</p>
+            <p><strong>Key Libraries:</strong> hmmlearn (HMM fitting), scikit-learn (Random Forest, k-means), scipy (KDE, statistics), folium (interactive mapping), xarray + netCDF4 (environmental raster handling), pandas, numpy, matplotlib</p>
+            <p><strong>Data Sources:</strong> Movebank Data Repository (Torres et al. 2017 GPS tracks), NASA JPL MUR SST monthly (NOAA CoastWatch ERDDAP), ESA CCI Ocean Colour monthly (NOAA CoastWatch ERDDAP), GEBCO 2026 bathymetry, CCAMLR Statistical Bulletin Vol. 37</p>
+            <p><strong>Methods:</strong> Gaussian Hidden Markov Model, Random Forest classification, kernel density estimation, k-means clustering, haversine distance calculation, Leaflet/Folium interactive cartography</p>
+        </div>
+
+    </div>
+
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>Open to collaboration on environmental data science projects and actively seeking opportunities in geospatial analysis and conservation science</p>
+
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/dtcrompton/" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://github.com/dtcrompton" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Project Details</a> ·
+                <a href="explainer.html">Stakeholder Explainer</a> ·
+                <a href="map.html">Interactive Map</a> ·
+                <a href="../../index.html">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Daniel Crompton | <a href="https://github.com/dtcrompton" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/dtcrompton/" target="_blank">LinkedIn</a></p>
+    </footer>
+</body>
+</html>
